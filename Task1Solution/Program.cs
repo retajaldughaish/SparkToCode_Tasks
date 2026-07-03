@@ -35,7 +35,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 3 - Even or Odd Checker
-
+            /*
             int i;
             Console.Write("Enter a Number To Check Whether it's an Odd or Even: ");
             i = int.Parse(Console.ReadLine());
@@ -47,6 +47,39 @@
             else
             {
                 Console.WriteLine("Entered Number is an Odd Number");
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 4 - Voting Eligibility
+
+            Console.Write("Please Enter Your Age: ");
+            int age = int.Parse(Console.ReadLine());
+            Console.Write("Please Enter whether you hold a valid national ID (yes/no): ");
+            String HoldID = Console.ReadLine();
+
+            bool hasID = false;
+            if (HoldID == "yes")
+            {
+                hasID = true;
+            }
+            else if (HoldID == "no")
+            {
+                hasID = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input for national ID. Please enter 'yes' or 'no'.");
+            }
+
+            if(age >= 18 && hasID)
+            {
+                Console.WriteLine("You are eligible to vote.");
+            }
+            else
+            {
+                Console.WriteLine("You are not eligible to vote.");
             }
         }
     }
