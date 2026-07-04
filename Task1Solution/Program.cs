@@ -53,7 +53,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 4 - Voting Eligibility
-
+            /*
             Console.Write("Please Enter Your Age: ");
             int age = int.Parse(Console.ReadLine());
             Console.Write("Please Enter whether you hold a valid national ID (yes/no): ");
@@ -81,6 +81,42 @@
             {
                 Console.WriteLine("You are not eligible to vote.");
             }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 5 - Grade Letter Lookup
+
+            Console.Write("Please Enter Your Grade ('A', 'B', 'C', 'D', or 'F'): ");
+            String grade = Console.ReadLine();
+
+            switch (grade)
+            {
+                case "A":
+                    Console.WriteLine("Excellent");
+                    break;
+
+                case "B":
+                    Console.WriteLine("Veery Good");
+                    break;
+
+                case "C":
+                    Console.WriteLine("Good");
+                    break;
+
+                case "D":
+                    Console.WriteLine("Pass");
+                    break;
+
+                case "F":
+                    Console.WriteLine("Fail");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid grade entered.");
+                    break;
+            }
         }
     }
 }
+
