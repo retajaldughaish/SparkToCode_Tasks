@@ -86,7 +86,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 5 - Grade Letter Lookup
-
+            /*
             Console.Write("Please Enter Your Grade ('A', 'B', 'C', 'D', or 'F'): ");
             String grade = Console.ReadLine();
 
@@ -116,6 +116,34 @@
                     Console.WriteLine("Invalid grade entered.");
                     break;
             }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 6 - Temperature Converter
+
+            Console.Write("Please Enter the Temperature in Celsius: ");
+            float celsius = float.Parse(Console.ReadLine());
+
+            float fahrenheit = (celsius * 9 / 5) + 32;
+
+            String classification;
+
+            if (celsius < 10)
+            {
+                classification = "Cold";
+            }
+            else if (celsius >= 10 && celsius <= 30)
+            {
+                classification = "Mild";
+            }
+            else
+            {
+                classification = "Hot";
+            }
+
+            Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
+            Console.WriteLine("Weather classification is " + classification);
         }
     }
 }
