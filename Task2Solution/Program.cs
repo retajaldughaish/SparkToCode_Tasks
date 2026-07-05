@@ -76,7 +76,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 5 - Number Guessing Game
-
+            /*
             int secretNumber = 42;
             int guessCount = 0;
 
@@ -101,6 +101,31 @@
 
             } while (true);
             Console.WriteLine("Attempts made: " + guessCount);
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 6 - Safe Division Calculator
+
+            try
+            {
+                Console.Write("Enter the First Number: ");
+                int num1 = int.Parse(Console.ReadLine());
+                Console.Write("Enter the Second Number: ");
+                int num2 = int.Parse(Console.ReadLine());
+                
+                int result = num1 / num2;
+                Console.WriteLine("Division Result: " + result);
+
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Cannot divide by zero.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter valid integers.");
+            }
         }
     }
 }
