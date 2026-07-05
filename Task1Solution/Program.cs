@@ -184,7 +184,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 8 - Restaurant Bill with Membership Discount
-
+            /*
             Console.Write("Please Enter the Total Bill Amount: ");
             double totalBill = double.Parse(Console.ReadLine());
             Console.Write("Please Enter Whether you are a loyalty member (yes/no): ");
@@ -212,6 +212,49 @@
             {
                 Console.WriteLine("Invalid input. Please ensure the bill amount is non-negative " +
                     "and membership status is either 'yes' or 'no'.");
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 9 - Day Name Finder
+
+            Console.Write("Please Enter a Number (1-7) to Find the Corresponding Day of the Week: ");
+            int dayNumber = int.Parse(Console.ReadLine());
+
+            switch (dayNumber)
+            {
+                case 1:
+                    Console.WriteLine("The day is Sunday.");
+                    break;
+
+                case 2:
+                    Console.WriteLine("The day is Monday.");
+                    break;
+
+                case 3:
+                    Console.WriteLine("The day is Tuesday.");
+                    break;
+
+                case 4:
+                    Console.WriteLine("The day is Wednesday.");
+                    break;
+
+                case 5:
+                    Console.WriteLine("The day is Thursday.");
+                    break;
+
+                case 6:
+                    Console.WriteLine("The day is Friday.");
+                    break;
+
+                case 7:
+                    Console.WriteLine("The day is Saturday.");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 7.");
+                    break;
             }
         }
     }
