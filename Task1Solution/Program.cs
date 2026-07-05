@@ -357,7 +357,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 12 - Shipping Cost Calculator
-
+            /*
             Console.Write("Please Enter a region code ('A' for local, 'B' for national, 'C' for international): ");
             String regionCode = Console.ReadLine();
             Console.Write("Please Enter the Weight of the Package in kg: ");
@@ -443,6 +443,46 @@
                 default:
                     Console.WriteLine("Invalid region code. Please enter 'A', 'B', or 'C'.");
                     break;
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 13 - Triangle Type Classifier
+
+            Console.Write("Please Enter the Length of the First Side of the Triangle: ");
+            float side1 = float.Parse(Console.ReadLine());
+            Console.Write("Please Enter the Length of the Second Side of the Triangle: ");
+            float side2 = float.Parse(Console.ReadLine());
+            Console.Write("Please Enter the Length of the Third Side of the Triangle: ");
+            float side3 = float.Parse(Console.ReadLine());
+
+            if (side1 <= 0 || side2 <= 0 || side3 <= 0)
+            {
+                Console.WriteLine("Invalid Input. All sides must be greater than 0.");
+            }
+            else
+            {
+                bool isValidTriangle = (side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1);
+                if (isValidTriangle)
+                {
+                    if (side1 == side2 && side2 == side3)
+                    {
+                        Console.WriteLine("The triangle is Equilateral.");
+                    }
+                    else if (side1 == side3 || side2 == side3 || side1 == side2)
+                    {
+                        Console.WriteLine("The triangle is Isosceles.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The triangle is Scalene.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The given sides do not form a valid triangle.");
+                }
             }
         }
     }
