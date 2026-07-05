@@ -149,7 +149,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 7 - Movie Ticket Pricing
-
+            /*
             Console.Write("Please Enter Your Age: ");
             int age = int.Parse(Console.ReadLine());
 
@@ -179,6 +179,40 @@
 
             Console.WriteLine("You are in the " + category + " category. Your ticket price is " 
                 + price + " OMR");
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 8 - Restaurant Bill with Membership Discount
+
+            Console.Write("Please Enter the Total Bill Amount: ");
+            double totalBill = double.Parse(Console.ReadLine());
+            Console.Write("Please Enter Whether you are a loyalty member (yes/no): ");
+            String membershipStatus = Console.ReadLine();
+
+            int discountPercentage = 15;
+
+            if (totalBill >20 && membershipStatus == "yes")
+            {
+                double discountAmount = (discountPercentage / 100.0) * totalBill;
+                double finalBill = totalBill - discountAmount;
+                Console.WriteLine("Your Original bill is: " + totalBill + " OMR");
+                Console.WriteLine("You are eligible for a " + discountPercentage + "% discount.");
+                Console.WriteLine("Discount amount: " + discountAmount + " OMR");
+                Console.WriteLine("Your final bill amount after discount is: " + finalBill + " OMR");
+            }
+            else if (totalBill >=0)
+            {
+                Console.WriteLine("Your Orginal bill is: " + totalBill + " OMR");
+                Console.WriteLine("You are not eligible for a discount.");
+                Console.WriteLine("Your total bill amount is: " + totalBill + " OMR");
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please ensure the bill amount is non-negative " +
+                    "and membership status is either 'yes' or 'no'.");
+            }
         }
     }
 }
