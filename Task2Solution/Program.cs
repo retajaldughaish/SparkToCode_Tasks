@@ -19,7 +19,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 2 - Sum of Numbers 1 to N
-
+            /*
             Console.Write("Enter a positive integer N: ");
             int n = int.Parse(Console.ReadLine());
 
@@ -33,6 +33,21 @@
             }
 
             Console.WriteLine("Sum of numbers from 1 to " + n + " is: " + sum);
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 3 - Multiplication Table
+
+            Console.Write("Enter a positive integer N for multiplication table: ");
+            int n = int.Parse(Console.ReadLine());
+
+            
+            for (int i = 1; i <= 10; i++) 
+            {
+                int result = n * i;
+                Console.WriteLine(n + " x " + i + " = " + result);
+            }
         }
     }
 }
