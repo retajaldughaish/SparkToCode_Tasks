@@ -372,16 +372,16 @@
                     baseCost = 1.000;
                     if (weight <= 0) 
                     {
-                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        Console.WriteLine("Invalid weight. Weight must be greater than 0.");
                         return;
-                    }
-                    else if (weight > 5 && weight < 10)
-                    {
-                        extraCharge = 2.000;
                     }
                     else if (weight > 10)
                     {
                         extraCharge = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extraCharge = 2.000;
                     }
                     else
                     {
@@ -396,16 +396,16 @@
                     baseCost = 3.000;
                     if (weight <= 0)
                     {
-                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        Console.WriteLine("Invalid weight. Weight must be greater than 0.");
                         return;
-                    }
-                    else if (weight > 5 && weight < 10)
-                    {
-                        extraCharge = 2.000;
                     }
                     else if (weight > 10)
                     {
                         extraCharge = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extraCharge = 2.000;
                     }
                     else
                     {
@@ -420,16 +420,16 @@
                     baseCost = 7.000;
                     if (weight <= 0)
                     {
-                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        Console.WriteLine("Invalid weight. Weight must be greater than 0.");
                         return;
-                    }
-                    else if (weight > 5 && weight < 10)
-                    {
-                        extraCharge = 2.000;
                     }
                     else if (weight > 10)
                     {
                         extraCharge = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extraCharge = 2.000;
                     }
                     else
                     {
