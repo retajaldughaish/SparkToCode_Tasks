@@ -489,7 +489,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 14 - Online Store Checkout
-
+            /*
             Console.Write("Please Enter the product code (1 =  Headphones, 2 = Keyboard , or 3 = Mouse): ");
             int productCode = int.Parse(Console.ReadLine());
 
@@ -539,6 +539,78 @@
             Console.WriteLine("Discount Amount: " + discountAmount + " OMR");
             Console.WriteLine("Tax Amount: " + taxAmount + " OMR");
             Console.WriteLine("Final Total: " + finalTotal + " OMR");
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 15 - University Admission Decision
+
+            Console.Write("Enter the program type ('S' for Science, 'A' for Arts): ");
+            char programType = char.Parse(Console.ReadLine());
+            Console.Write("Enter your GPA (out of 4.0): ");
+            double gpa = double.Parse(Console.ReadLine());
+            if (gpa < 0 || gpa > 4.0)
+            {
+                Console.WriteLine("Invalid GPA. Enter a number between 0.0 and 4.0.");
+                return;
+            }
+            Console.Write("Enter your Entrance Exam Score (out of 100): ");
+            float examScore = float.Parse(Console.ReadLine());
+            if (examScore < 0 || examScore > 100)
+            {
+                Console.WriteLine("Invalid exam score. Enter a number between 0 and 100.");
+                return;
+            }
+            Console.Write("Do you have any extracurricular achievements? (yes/no): ");
+            string achievement = Console.ReadLine();
+
+            string result;
+
+            switch (programType)
+            {
+                case 'S':
+               
+                    if (gpa >= 3.0 && examScore >= 75)
+                    {
+                        
+                        result = "Admitted";
+                    }
+                    else if (achievement == "yes")
+                    {
+                        result = "Conditionally Admitted";
+                    }
+                    else
+                    {
+                        result = "Not Admitted";
+                    }
+                    break;
+
+                case 'A':
+                    
+                    if (gpa >= 2.5 && examScore >= 60)
+                    {
+                        result = "Admitted";
+                    }
+                    else if (achievement == "yes")
+                    {
+                        result = "Conditionally Admitted";
+                    }
+                    else
+                    {
+                        result = "Not Admitted";
+                    }
+
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Program type.");
+                    return;
+
+            }
+
+            Console.WriteLine("Program Type: " + programType);
+            Console.WriteLine("Admission Result: " + result);
+          
         }
     }
 }
