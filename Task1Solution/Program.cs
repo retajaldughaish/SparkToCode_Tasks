@@ -121,7 +121,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 6 - Temperature Converter
-
+            /*
             Console.Write("Please Enter the Temperature in Celsius: ");
             float celsius = float.Parse(Console.ReadLine());
 
@@ -144,6 +144,41 @@
 
             Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
             Console.WriteLine("Weather classification is " + classification);
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 7 - Movie Ticket Pricing
+
+            Console.Write("Please Enter Your Age: ");
+            int age = int.Parse(Console.ReadLine());
+
+            String category;
+            double price;
+
+            if (age >=0 && age <=12)
+            {
+                category = "Child";
+                price = 2.000;
+            }
+            else if (age >=13 && age <= 59)
+            {
+                category = "Adult";
+                price = 5.000;
+            }
+            else if (age >= 60)
+            {
+                category = "Senior";
+                price = 3.000;
+            }
+            else
+            {
+                category = "Invalid age";
+                price = 0.000;
+            }
+
+            Console.WriteLine("You are in the " + category + " category. Your ticket price is " 
+                + price + " OMR");
         }
     }
 }
