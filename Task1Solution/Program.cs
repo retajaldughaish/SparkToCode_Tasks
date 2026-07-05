@@ -316,7 +316,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 11 -  Loan Eligibility System
-
+            /*
             Console.Write("Please Enter Your Age: ");
             int age = int.Parse(Console.ReadLine());
             Console.Write("Please Enter Your Monthly Income: ");
@@ -351,6 +351,98 @@
             else
             {
                 Console.WriteLine("You are not eligible because you have an existing loan.");
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 12 - Shipping Cost Calculator
+
+            Console.Write("Please Enter a region code ('A' for local, 'B' for national, 'C' for international): ");
+            String regionCode = Console.ReadLine();
+            Console.Write("Please Enter the Weight of the Package in kg: ");
+            float weight = float.Parse(Console.ReadLine());
+
+            double baseCost;
+            double extraCharge;
+
+            switch (regionCode)
+            {
+                case "A":
+                    baseCost = 1.000;
+                    if (weight <= 0) 
+                    {
+                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        return;
+                    }
+                    else if (weight > 5 && weight < 10)
+                    {
+                        extraCharge = 2.000;
+                    }
+                    else if (weight > 10)
+                    {
+                        extraCharge = 5.000;
+                    }
+                    else
+                    {
+                        extraCharge = 0.000;
+                    }
+                    Console.WriteLine("The Base Cost for region " + regionCode + " is: " + baseCost + " OMR");
+                    Console.WriteLine("The Extra Charge for the package weight is: " + extraCharge + " OMR");
+                    Console.WriteLine("The Total Shipping Cost is: " + (baseCost + extraCharge) + " OMR");
+                    break;
+
+                case "B":
+                    baseCost = 3.000;
+                    if (weight <= 0)
+                    {
+                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        return;
+                    }
+                    else if (weight > 5 && weight < 10)
+                    {
+                        extraCharge = 2.000;
+                    }
+                    else if (weight > 10)
+                    {
+                        extraCharge = 5.000;
+                    }
+                    else
+                    {
+                        extraCharge = 0.000;
+                    }
+                    Console.WriteLine("The Base Cost for region " + regionCode + " is: " + baseCost + " OMR");
+                    Console.WriteLine("The Extra Charge for the package weight is: " + extraCharge + " OMR");
+                    Console.WriteLine("The Total Shipping Cost is: " + (baseCost + extraCharge) + " OMR");
+                    break;
+
+                case "C":
+                    baseCost = 7.000;
+                    if (weight <= 0)
+                    {
+                        Console.WriteLine("Invalid weight. Please enter a non-negative value.");
+                        return;
+                    }
+                    else if (weight > 5 && weight < 10)
+                    {
+                        extraCharge = 2.000;
+                    }
+                    else if (weight > 10)
+                    {
+                        extraCharge = 5.000;
+                    }
+                    else
+                    {
+                        extraCharge = 0.000;
+                    }
+                    Console.WriteLine("The Base Cost for region " + regionCode + " is: " + baseCost + " OMR");
+                    Console.WriteLine("The Extra Charge for the package weight is: " + extraCharge + " OMR");
+                    Console.WriteLine("The Total Shipping Cost is: " + (baseCost + extraCharge) + " OMR");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid region code. Please enter 'A', 'B', or 'C'.");
+                    break;
             }
         }
     }
