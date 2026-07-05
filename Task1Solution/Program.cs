@@ -449,7 +449,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 13 - Triangle Type Classifier
-
+            /*
             Console.Write("Please Enter the Length of the First Side of the Triangle: ");
             float side1 = float.Parse(Console.ReadLine());
             Console.Write("Please Enter the Length of the Second Side of the Triangle: ");
@@ -484,6 +484,61 @@
                     Console.WriteLine("The given sides do not form a valid triangle.");
                 }
             }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 14 - Online Store Checkout
+
+            Console.Write("Please Enter the product code (1 =  Headphones, 2 = Keyboard , or 3 = Mouse): ");
+            int productCode = int.Parse(Console.ReadLine());
+
+            double unitPrice;
+            switch (productCode)
+            {
+                case 1:
+                    unitPrice = 8.500;
+                    break;
+
+                case 2:
+                    unitPrice = 12.000;
+                    break;
+
+                case 3:
+                    unitPrice = 5.000;
+                    break;
+                default:
+                    Console.WriteLine("Invalid product code. Please enter 1, 2, or 3.");
+                    return;
+            }
+
+            Console.Write("Please Enter the Quantity of the Product: ");
+            int quantity = int.Parse(Console.ReadLine());
+            if (quantity <= 0)
+            {
+                Console.WriteLine("Invalid quantity. Please enter a positive number.");
+                return;
+            }
+
+            Console.Write("Do you have a discount coupon? (yes/no): ");
+            string coupon = Console.ReadLine();
+
+            double subtotal = unitPrice * quantity;
+            double discountAmount = 0;
+            
+            if (coupon == "yes" && subtotal > 20)
+            {
+                discountAmount = 0.10 * subtotal;
+            }
+
+            double afterDiscount = subtotal - discountAmount;
+            double taxAmount = 0.05 * afterDiscount;
+            double finalTotal = afterDiscount + taxAmount;
+
+            Console.WriteLine("Subtotal: " + subtotal + " OMR");
+            Console.WriteLine("Discount Amount: " + discountAmount + " OMR");
+            Console.WriteLine("Tax Amount: " + taxAmount + " OMR");
+            Console.WriteLine("Final Total: " + finalTotal + " OMR");
         }
     }
 }
