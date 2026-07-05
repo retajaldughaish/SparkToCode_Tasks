@@ -38,7 +38,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 3 - Multiplication Table
-
+            /*
             Console.Write("Enter a positive integer N for multiplication table: ");
             int n = int.Parse(Console.ReadLine());
 
@@ -47,6 +47,29 @@
             {
                 int result = n * i;
                 Console.WriteLine(n + " x " + i + " = " + result);
+            }
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 4 - Password Retry
+
+            string correctPassword = "Spark2026";
+
+            while (true)
+            {
+                Console.Write("Enter the password: ");
+                string userInput = Console.ReadLine();
+                
+                if (userInput == correctPassword)
+                {
+                    Console.WriteLine("Access granted.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect password. Please try again.");
+                }
             }
         }
     }
