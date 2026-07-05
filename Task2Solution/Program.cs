@@ -53,7 +53,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 4 - Password Retry
-
+            /*
             string correctPassword = "Spark2026";
 
             while (true)
@@ -71,6 +71,36 @@
                     Console.WriteLine("Incorrect password. Please try again.");
                 }
             }
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 5 - Number Guessing Game
+
+            int secretNumber = 42;
+            int guessCount = 0;
+
+            do
+            {
+                Console.Write("Guess the secret number (between 1 and 100): ");
+                int userGuess = int.Parse(Console.ReadLine());
+                guessCount++;
+                if (userGuess < secretNumber)
+                {
+                    Console.WriteLine("Too low! Try again.");
+                }
+                else if (userGuess > secretNumber)
+                {
+                    Console.WriteLine("Too high! Try again.");
+                }
+                else
+                {
+                    Console.WriteLine("Congratulations! You've guessed the secret number.");
+                    break;
+                }
+
+            } while (true);
+            Console.WriteLine("Attempts made: " + guessCount);
         }
     }
 }
