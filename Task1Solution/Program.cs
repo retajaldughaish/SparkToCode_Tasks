@@ -218,7 +218,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 9 - Day Name Finder
-
+            /*
             Console.Write("Please Enter a Number (1-7) to Find the Corresponding Day of the Week: ");
             int dayNumber = int.Parse(Console.ReadLine());
 
@@ -254,6 +254,61 @@
 
                 default:
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 7.");
+                    break;
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 10 - Mini Calculator
+
+            Console.Write("Please Enter the First Number: ");
+            float n1 = float.Parse(Console.ReadLine());
+            Console.Write("Please Enter the Second Number: ");
+            float n2 = float.Parse(Console.ReadLine());
+            Console.Write("Please Enter the Operation (+, -, *, /, Or %): ");
+            String operation = Console.ReadLine();
+
+            switch (operation)
+            {
+                case "+":
+                    Console.WriteLine("The Result of " + n1 + " + " + n2 + " = " + (n1 + n2));
+                    break;
+
+                case "-":
+                    Console.WriteLine("The Result of " + n1 + " - " + n2 + " = " + (n1 - n2));
+                    break;
+
+                case "*":
+                    Console.WriteLine("The Result of " + n1 + " * " + n2 + " = " + (n1 * n2));
+                    break;
+
+                case "/":
+                    if (n2 != 0)
+                    {
+                        Console.WriteLine("The Result of " + n1 + " / " + n2 + " = " + (n1 / n2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Division by zero is not allowed.");
+                    }
+                    break;
+
+                case "%":
+                    if (n2 != 0)
+                    {
+                        Console.WriteLine("The Result of " + n1 + " % " + n2 + " = " + (n1 % n2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Modulus by zero is not allowed.");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid operation. Please enter one of the following:" +
+                        "" +
+                        " '+', '-', '*', '/', '%'.");
                     break;
             }
         }
