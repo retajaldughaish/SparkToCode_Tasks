@@ -261,7 +261,7 @@
             ////////////////////////////////////////////////////////
 
             // Problem 10 - Mini Calculator
-
+            /*
             Console.Write("Please Enter the First Number: ");
             float n1 = float.Parse(Console.ReadLine());
             Console.Write("Please Enter the Second Number: ");
@@ -310,6 +310,47 @@
                         "" +
                         " '+', '-', '*', '/', '%'.");
                     break;
+            }
+            */
+
+            ////////////////////////////////////////////////////////
+
+            // Problem 11 -  Loan Eligibility System
+
+            Console.Write("Please Enter Your Age: ");
+            int age = int.Parse(Console.ReadLine());
+            Console.Write("Please Enter Your Monthly Income: ");
+            double monthlyIncome = double.Parse(Console.ReadLine());
+            Console.Write("Do you have an existing loan (yes/no): ");
+            String existingLoanInput = Console.ReadLine();
+
+            if (age < 0)
+            {
+                Console.WriteLine("Age cannot be negative.");
+            }
+            else if (monthlyIncome < 0)
+            {
+                Console.WriteLine("Monthly income cannot be negative.");
+            }
+            else if (existingLoanInput != "yes" && existingLoanInput != "no")
+            {
+                Console.WriteLine("Invalid input. Please enter only 'yes' or 'no'.");
+            }
+            else if (age >= 21 && age <= 60 && monthlyIncome >= 400 && existingLoanInput == "no")
+            {
+                Console.WriteLine("You are eligible for a loan.");
+            }
+            else if (age < 21 || age > 60)
+            {
+                Console.WriteLine("You are not eligible due to age restrictions.");
+            }
+            else if (monthlyIncome < 400)
+            {
+                Console.WriteLine("You are not eligible due to insufficient income.");
+            }
+            else
+            {
+                Console.WriteLine("You are not eligible because you have an existing loan.");
             }
         }
     }
