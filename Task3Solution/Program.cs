@@ -140,7 +140,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 8 - Membership Expiry Checker
-
+            /*
             Console.Write("Enter Membership Start Date (yyyy-MM-dd): ");
             string startInput = Console.ReadLine();
 
@@ -176,6 +176,27 @@
                 Console.WriteLine("Membership Status: Expired");
                 Console.WriteLine("Expiry Date: " + expiryString);
             }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 9 - Round Up / Round Down Explorer
+
+            Console.Write("Enter a decimal number: ");
+            if (!double.TryParse(Console.ReadLine(), out double value))
+            {
+                Console.WriteLine("Invalid input. Please enter a decimal number.");
+                return;
+            }
+
+            double nearest = Math.Round(value, 0);
+            double alwaysUp = Math.Ceiling(value);
+            double alwaysDown = Math.Floor(value);
+
+            Console.WriteLine("Rounded to nearest whole number: " + nearest);
+            Console.WriteLine("Always rounded up (ceiling): " + alwaysUp);
+            Console.WriteLine("Always rounded down (floor): " + alwaysDown);
+
         }
     }
 }
