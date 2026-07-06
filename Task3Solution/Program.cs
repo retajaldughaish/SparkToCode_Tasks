@@ -33,13 +33,36 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 3 - Name Formatter
-
+            /*
             Console.Write("Enter your Full Name: ");
             String Name = Console.ReadLine();
 
             Console.WriteLine("Your Name in Upper Case: " + Name.ToUpper());
             Console.WriteLine("Your Name in Lower Case: " + Name.ToLower());
             Console.WriteLine("The Length of your Name is: " + Name.Length); 
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 4 - Subscription End Date
+
+            Console.Write("Enter the number of days of a free trial: ");
+            if (!int.TryParse(Console.ReadLine(), out int freeTrialDays))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number of days.");
+                return;
+            }
+
+            if (freeTrialDays <= 0)
+            {
+                Console.WriteLine("The number of days must be greater than zero.");
+                return;
+            }
+
+            DateTime Start = DateTime.Now;
+            DateTime End = Start.AddDays(freeTrialDays);
+            Console.WriteLine("Your free trial will end on: " + End.ToString("dd/MM/yyyy"));
         }
     }
 }
+
