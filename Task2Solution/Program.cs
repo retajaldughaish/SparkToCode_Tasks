@@ -174,7 +174,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 8 - Sum of Even Numbers Only
-
+            /*
             try
             {
                 Console.Write("Enter a positive integer N: ");
@@ -201,6 +201,43 @@
             {
                 Console.WriteLine("Invalid input. Please enter a valid integer.");
             }
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 9 - Validated Positive Number Input
+
+            int n = 0;
+            bool valid = false;
+
+            do
+            {
+                try
+                {
+                    Console.Write("Enter a positive integer number: ");
+                    n = int.Parse(Console.ReadLine());
+                    if (n <= 0)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a positive integer.");
+                    }
+                    else
+                    {
+                        valid = true;
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid integer.");
+
+                }
+            } while (!valid);
+            int sum = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                sum += i;
+            }
+            Console.WriteLine("Sum of numbers from 1 to " + n + " is: " + sum);
         }
     }
 }
