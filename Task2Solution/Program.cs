@@ -106,7 +106,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 6 - Safe Division Calculator
-
+            /*
             try
             {
                 Console.Write("Enter the First Number: ");
@@ -126,6 +126,49 @@
             {
                 Console.WriteLine("Invalid input. Please enter valid integers.");
             }
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 7 - Repeating Menu with Exit Option
+
+            while (true)
+            {
+                Console.WriteLine("Menu:");
+                Console.WriteLine("1. Say Hello");
+                Console.WriteLine("2. Show Current Time-of-day Greeting ");
+                Console.WriteLine("3. Exit");
+                try
+                {
+                    Console.Write("Enter your choice (1-3): ");
+                    int choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Hello");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Good Morning! Have a great day!");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Exiting the program.");
+                            return;
+
+                        default:
+                            Console.WriteLine("Invalid choice. Please select 1, 2, or 3.");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+
+                Console.WriteLine();
+            }   
         }
     }
 }
