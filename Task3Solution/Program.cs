@@ -67,7 +67,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 5 - Grade Rounding System
-
+            /*
             Console.Write("Enter your Raw Exam Score as a Decimal Number: ");
             if (!double.TryParse(Console.ReadLine(), out double rawScore))
             {
@@ -92,7 +92,34 @@
             {
                 Console.WriteLine("You Failed the Exam.");
             }
+            */
 
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 6 - Password Strength Checker
+
+            Console.Write("Enter your Password: ");
+            string password = Console.ReadLine();
+            string P = password.Trim();
+            string pLower = P.ToLower();
+
+            bool longEnough = P.Length >= 8;
+            bool containsForbidden = pLower.Contains("password");
+
+            if (longEnough && !containsForbidden)
+            {
+                Console.WriteLine("Strong password");
+            }
+            else
+            {
+                Console.WriteLine("Weak password");
+                if (! longEnough)
+                
+                    Console.WriteLine("Reason: must be at least 8 characters long.");
+
+                if (containsForbidden)
+                    Console.WriteLine("Reason: must not contain the word 'password'.");
+            }
         }
     }
 }
