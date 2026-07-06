@@ -45,7 +45,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 4 - Subscription End Date
-
+            /*
             Console.Write("Enter the number of days of a free trial: ");
             if (!int.TryParse(Console.ReadLine(), out int freeTrialDays))
             {
@@ -62,6 +62,37 @@
             DateTime Start = DateTime.Now;
             DateTime End = Start.AddDays(freeTrialDays);
             Console.WriteLine("Your free trial will end on: " + End.ToString("dd/MM/yyyy"));
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 5 - Grade Rounding System
+
+            Console.Write("Enter your Raw Exam Score as a Decimal Number: ");
+            if (!double.TryParse(Console.ReadLine(), out double rawScore))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid decimal number for the score.");
+                return;
+            }
+
+            if (rawScore < 0)
+            {
+                Console.WriteLine("Invalid input. The score cannot be negative.");
+                return;
+            }
+
+            int roundedScore = (int)Math.Round(rawScore);
+            Console.WriteLine("Rounded Score: " + roundedScore);
+
+            if (roundedScore >= 60)
+            {
+                Console.WriteLine("You Passed the Exam.");
+            }
+            else
+            {
+                Console.WriteLine("You Failed the Exam.");
+            }
+
         }
     }
 }
