@@ -97,7 +97,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 6 - Password Strength Checker
-
+            /*
             Console.Write("Enter your Password: ");
             string password = Console.ReadLine();
             string P = password.Trim();
@@ -120,6 +120,21 @@
                 if (containsForbidden)
                     Console.WriteLine("Reason: must not contain the word 'password'.");
             }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 7 - Clean Name Comparator
+
+            Console.Write("Enter the name (First Input): ");
+            string name1 = Console.ReadLine();
+            Console.Write("Enter the name again (Second Input): ");
+            string name2 = Console.ReadLine();
+
+            string clean1 = (name1 ?? "").Trim().ToUpper();
+            string clean2 = (name2 ?? "").Trim().ToUpper();
+
+            Console.WriteLine(clean1 == clean2 ? "Match" : "No Match");
         }
     }
 }
