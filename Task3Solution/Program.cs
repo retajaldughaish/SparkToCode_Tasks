@@ -201,7 +201,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 10 - Word Position Finder
-
+            /*
             Console.Write("Enter a full sentence: ");
             string sentence = Console.ReadLine() ?? "";
 
@@ -224,6 +224,47 @@
                 int lastIndex = sentence.LastIndexOf(word, StringComparison.OrdinalIgnoreCase);
                 Console.WriteLine("First occurrence index: " + firstIndex);
                 Console.WriteLine("Last occurrence index: " + lastIndex);
+            }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 11 -  One-Time Password (OTP) Generator
+
+            Random rnd = new Random();
+            int otp = rnd.Next(1000, 10000); 
+            Console.WriteLine("OTP (sent): " + otp); 
+
+            int attempts = 0;
+            bool verified = false;
+
+            while (attempts < 3 && !verified)
+            {
+                attempts++;
+                Console.Write("Enter the 4-digit OTP: ");
+                try
+                {
+                    int entered = int.Parse(Console.ReadLine());
+                    if (entered == otp)
+                    {
+                        Console.WriteLine("Verified");
+                        verified = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect code. Attempts left: " + (3 - attempts));
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input (non-numeric). Attempts left: " + (3 - attempts));
+                }
+            }
+
+            if (!verified)
+            {
+                Console.WriteLine("Verification Failed");
             }
         }
     }
