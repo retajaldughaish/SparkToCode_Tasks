@@ -125,7 +125,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 7 - Clean Name Comparator
-
+            /*
             Console.Write("Enter the name (First Input): ");
             string name1 = Console.ReadLine();
             Console.Write("Enter the name again (Second Input): ");
@@ -135,6 +135,47 @@
             string clean2 = (name2 ?? "").Trim().ToUpper();
 
             Console.WriteLine(clean1 == clean2 ? "Match" : "No Match");
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 8 - Membership Expiry Checker
+
+            Console.Write("Enter Membership Start Date (yyyy-MM-dd): ");
+            string startInput = Console.ReadLine();
+
+            DateTime startDate;
+
+            try
+            {
+                startDate = DateTime.Parse(startInput);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid date format. Use yyyy-MM-dd.");
+                return;
+            }
+
+            Console.Write("Enter number of Valid Membership days: ");
+            if (!int.TryParse(Console.ReadLine(), out int validDays) || validDays < 0)
+            {
+                Console.WriteLine("Invalid Number of days. Enter a non-negative integer.");
+                return;
+            }
+
+            DateTime expiryDate = startDate.AddDays(validDays);
+            string expiryString = expiryDate.ToString("yyyy-MM-dd");
+
+            if (expiryDate >= DateTime.Today)
+            {
+                Console.WriteLine("Membership Status: Active");
+                Console.WriteLine("Expiry Date: " + expiryString);
+            }
+            else
+            {
+                Console.WriteLine("Membership Status: Expired");
+                Console.WriteLine("Expiry Date: " + expiryString);
+            }
         }
     }
 }
