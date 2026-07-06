@@ -181,7 +181,7 @@
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
             // Problem 9 - Round Up / Round Down Explorer
-
+            /*
             Console.Write("Enter a decimal number: ");
             if (!double.TryParse(Console.ReadLine(), out double value))
             {
@@ -196,7 +196,35 @@
             Console.WriteLine("Rounded to nearest whole number: " + nearest);
             Console.WriteLine("Always rounded up (ceiling): " + alwaysUp);
             Console.WriteLine("Always rounded down (floor): " + alwaysDown);
+            */
 
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 10 - Word Position Finder
+
+            Console.Write("Enter a full sentence: ");
+            string sentence = Console.ReadLine() ?? "";
+
+            Console.Write("Enter a single word to search for: ");
+            string word = Console.ReadLine() ?? "";
+
+            if (string.IsNullOrWhiteSpace(word))
+            {
+                Console.WriteLine("No search word provided.");
+                return;
+            }
+
+            int firstIndex = sentence.IndexOf(word, StringComparison.OrdinalIgnoreCase);
+            if (firstIndex == -1)
+            {
+                Console.WriteLine($"'{word}' not found in the sentence.");
+            }
+            else
+            {
+                int lastIndex = sentence.LastIndexOf(word, StringComparison.OrdinalIgnoreCase);
+                Console.WriteLine("First occurrence index: " + firstIndex);
+                Console.WriteLine("Last occurrence index: " + lastIndex);
+            }
         }
     }
 }
