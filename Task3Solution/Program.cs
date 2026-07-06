@@ -229,8 +229,8 @@
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
-            // Problem 11 -  One-Time Password (OTP) Generator
-
+            // Problem 11 - One-Time Password (OTP) Generator
+            /*
             Random rnd = new Random();
             int otp = rnd.Next(1000, 10000); 
             Console.WriteLine("OTP (sent): " + otp); 
@@ -266,6 +266,43 @@
             {
                 Console.WriteLine("Verification Failed");
             }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Problem 12 - Birthday Insights
+
+            Console.Write("Enter your date of birth (yyyy-MM-dd): ");
+            string dobInput = Console.ReadLine();
+
+            DateTime dob;
+            try
+            {
+                dob = DateTime.Parse(dobInput);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid date format. Please use yyyy-MM-dd.");
+                return;
+            }
+
+            DateTime today = DateTime.Today;
+            if (dob > today)
+            {
+                Console.WriteLine("Invalid date: date of birth cannot be in the future.");
+                return;
+            }
+
+            int age = today.Year - dob.Year;
+            if (today.Month < dob.Month || (today.Month == dob.Month && today.Day < dob.Day))
+            {
+                age--; 
+            }
+
+            DayOfWeek birthWeekday = dob.DayOfWeek;
+
+            Console.WriteLine("Age (years): " + age);
+            Console.WriteLine("Day of week born: " + birthWeekday.ToString());
         }
     }
 }
