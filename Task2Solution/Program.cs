@@ -131,7 +131,7 @@
             /////////////////////////////////////////////////////////////////////////
 
             // Problem 7 - Repeating Menu with Exit Option
-
+            /*
             while (true)
             {
                 Console.WriteLine("Menu:");
@@ -168,7 +168,39 @@
                 }
 
                 Console.WriteLine();
-            }   
+            }  
+            */
+
+            /////////////////////////////////////////////////////////////////////////
+
+            // Problem 8 - Sum of Even Numbers Only
+
+            try
+            {
+                Console.Write("Enter a positive integer N: ");
+                int n = int.Parse(Console.ReadLine());
+
+                int sumEven = 0;
+
+                if (n < 0)
+                {
+                    Console.WriteLine("Please enter a positive integer.");
+                    return;
+                }
+
+                for (int i = 1; i <= n; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        sumEven += i;
+                    }
+                }
+                Console.WriteLine("Sum of even numbers from 1 to " + n + " is: " + sumEven);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+            }
         }
     }
 }
