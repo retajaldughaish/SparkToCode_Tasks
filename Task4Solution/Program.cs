@@ -23,10 +23,23 @@
         ////////////////////////////////////////////////////////////////////////
 
         //Problem 3 - Celsius to Fahrenheit Function
-
+        /*
         public static double CelsiusToFahrenheit (double C)
         {
             return (C * 9 / 5) + 32;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 4 - Fixed Menu Display Function
+
+        public static void DisplayMenu()
+        {
+            Console.WriteLine("Main Menu");
+            Console.WriteLine("1. Start");
+            Console.WriteLine("2. Help");
+            Console.WriteLine("3. Exit");
         }
 
         static void Main(string[] args)
@@ -54,13 +67,20 @@
             ////////////////////////////////////////////////////////////////////////
 
             //Problem 3 - Celsius to Fahrenheit Function
-
+            /*
             Console.Write("Enter a Temperature Value in Celsius: ");
             double C = double.Parse(Console.ReadLine());
 
             double ResultInF = CelsiusToFahrenheit(C);
 
             Console.WriteLine("Temperature in Fahrenheit = " + ResultInF);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 4 - Fixed Menu Display Function
+
+            DisplayMenu();
         }
     }
 }
