@@ -56,7 +56,7 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 6 - Rectangle Area & Perimeter Functions
-
+        /*
         public static double CalculateArea (double length, double width)
         {
             return length * width;
@@ -65,6 +65,39 @@
         public static double CalculatePerimeter (double length, double width)
         {
             return 2 * (length + width);
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 7 - Grade Letter Function
+
+        public static string GetGradeLetter (int grade)
+        {
+            if (grade >= 0 && grade <= 49)
+            {
+                return "F";
+            }
+            else if (grade >= 50 && grade <= 59)
+            {
+                return "D";
+            }
+            else if (grade >= 60 && grade <= 69)
+            {
+                return "C";
+            }
+            else if (grade >= 70 && grade <= 79)
+            {
+                return "B";
+            }
+            else if (grade >= 80 && grade <=100)
+            {
+                return "A";
+            }
+            else
+            {
+                return "Invalid Grade";
+            }
         }
         static void Main(string[] args)
         {
@@ -127,7 +160,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 6 - Rectangle Area & Perimeter Functions
-
+            /*
             Console.Write("Enter Rectangle Length: ");
             double length = Convert.ToDouble(Console.ReadLine());
 
@@ -139,6 +172,25 @@
 
             Console.WriteLine("Rectangle Area: " + area);
             Console.WriteLine("Rectangle Perimeter: " + perimeter);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 7 - Grade Letter Function
+
+            Console.Write("Enter your Grade: ");
+            int grade = int.Parse(Console.ReadLine());
+
+            string letter = GetGradeLetter(grade);
+
+            if (letter == "Invalid Grade")
+            {
+                Console.WriteLine("Please enter a grade between 0 and 100.");
+            }
+            else
+            {
+                Console.WriteLine("Your Grade is: " + letter);
+            }
         }
     }
 }
