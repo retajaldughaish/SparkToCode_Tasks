@@ -46,12 +46,26 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 5 - Even or Odd Function
-
+        /*
         public static bool IsEven (int n)
         {
             return n % 2 == 0;
         }
+        */
 
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 6 - Rectangle Area & Perimeter Functions
+
+        public static double CalculateArea (double length, double width)
+        {
+            return length * width;
+        }
+
+        public static double CalculatePerimeter (double length, double width)
+        {
+            return 2 * (length + width);
+        }
         static void Main(string[] args)
         {
             // Problem 1 - Personalized Welcome Function
@@ -96,7 +110,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 5 - Even or Odd Function
-
+            /*
             Console.Write("Enter a Number: ");
             int n = int.Parse(Console.ReadLine());
 
@@ -108,6 +122,23 @@
             {
                 Console.WriteLine("The Number is Odd.");
             }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 6 - Rectangle Area & Perimeter Functions
+
+            Console.Write("Enter Rectangle Length: ");
+            double length = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter Rectangle Width: ");
+            double width = Convert.ToDouble(Console.ReadLine());
+
+            double area = CalculateArea(length, width);
+            double perimeter = CalculatePerimeter(length, width);
+
+            Console.WriteLine("Rectangle Area: " + area);
+            Console.WriteLine("Rectangle Perimeter: " + perimeter);
         }
     }
 }
