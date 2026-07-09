@@ -33,13 +33,23 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 4 - Fixed Menu Display Function
-
+        /*
         public static void DisplayMenu()
         {
             Console.WriteLine("Main Menu");
             Console.WriteLine("1. Start");
             Console.WriteLine("2. Help");
             Console.WriteLine("3. Exit");
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 5 - Even or Odd Function
+
+        public static bool IsEven (int n)
+        {
+            return n % 2 == 0;
         }
 
         static void Main(string[] args)
@@ -79,8 +89,25 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 4 - Fixed Menu Display Function
-
+            /*
             DisplayMenu();
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 5 - Even or Odd Function
+
+            Console.Write("Enter a Number: ");
+            int n = int.Parse(Console.ReadLine());
+
+            if (IsEven(n))
+            {
+                Console.WriteLine("The Number is Even.");
+            }
+            else
+            {
+                Console.WriteLine("The Number is Odd.");
+            }
         }
     }
 }
