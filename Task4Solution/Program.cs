@@ -152,7 +152,7 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 11 - Function-Based Calculator
-
+        /*
         public static double Add (double An1, double An2)
         {
             return An1 + An2;
@@ -190,7 +190,50 @@
         {
             Console.WriteLine(operation + " Result = " + result);
         }
+        */
 
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 12 - Student Report Card Generator
+
+        public static double CalculateAverage (double score1, double score2, double score3)
+        {
+            return (score1 + score2 + score3) / 3;
+        }
+
+        public static string GetGradeLetter (double average)
+        {
+            if (average >= 0 && average <= 49)
+            {
+                return "F";
+            }
+            else if (average >= 50 && average <= 59)
+            {
+                return "D";
+            }
+            else if (average >= 60 && average <= 69)
+            {
+                return "C";
+            }
+            else if (average >= 70 && average <= 79)
+            {
+                return "B";
+            }
+            else if (average >= 80 && average <= 100)
+            {
+                return "A";
+            }
+            else
+            {
+                return "Invalid Average Score";
+            }
+        }
+
+        public static void PrintReportCard (string Sname, double average, string GradeLetter)
+        {
+            Console.WriteLine("Student Name: " + Sname + "\nAverage Score: " + average.ToString("F2") +
+                  "\nGrade Letter: " + GradeLetter);
+        }
         static void Main(string[] args)
         {
             // Problem 1 - Personalized Welcome Function
@@ -372,7 +415,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 11 - Function-Based Calculator
-
+            /*
             bool exit = false;
 
             while (!exit)
@@ -447,6 +490,29 @@
                         break;
                 }
             }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 12 - Student Report Card Generator
+
+            Console.Write("Enter your Full Name: ");
+            string Sname = Console.ReadLine();
+
+            Console.Write("Enter Subject 1 Score: ");
+            double score1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Subject 2 Score: ");
+            double score2 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Subject 3 Score: ");
+            double score3 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            double Average = CalculateAverage(score1, score2, score3);
+            string GradeLetter = GetGradeLetter(Average);
+
+            PrintReportCard(Sname, Average, GradeLetter);
+
         }
     }
 }
