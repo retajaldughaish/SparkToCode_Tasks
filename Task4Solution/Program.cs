@@ -104,13 +104,33 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 8 - Countdown Function
-
+        /*
         public static void Countdown (int num)
         {
             for (int i = num; i > 0; i--) 
             {
                 Console.WriteLine (i);
             }
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 9 - Overloaded Multiply Function
+
+        public static int Multiply (int n1, int n2)
+        {
+            return n1 * n2;
+        }
+
+        public static double Multiply (double num1, double num2) 
+        {
+            return num1 * num2;
+        }
+
+        public static int Multiply (int N1, int N2, int N3)
+        {
+            return N1 * N2 * N3;
         }
         static void Main(string[] args)
         {
@@ -209,7 +229,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 8 - Countdown Function
-
+            /*
             Console.Write("Enter a Starting Number: ");
             int num = int.Parse(Console.ReadLine());
 
@@ -221,6 +241,39 @@
             {
                 Console.WriteLine("Please enter a positive number.");
             }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 9 - Overloaded Multiply Function
+
+            Console.Write("Enter First Integer: ");
+            int n1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Second Integer: ");
+            int n2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Two int Parameters Multiplication: " + Multiply(n1, n2));
+            Console.WriteLine();
+
+            Console.Write("Enter First Decimal Number: ");
+            double num1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Second Decimal Number: ");
+            double num2 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Two double Parameters Multiplication: " + Multiply(num1, num2));
+            Console.WriteLine();
+
+            Console.Write("Enter First Integer: ");
+            int N1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Second Integer: ");
+            int N2 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Third Integer: ");
+            int N3 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Three int Parameters Multiplication: " + Multiply(N1, N2, N3));
         }
     }
 }
