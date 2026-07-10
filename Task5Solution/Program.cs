@@ -26,7 +26,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 2 - Dynamic To-Do List
-
+            /*
             List <string> toDo = new List <string> ();
 
             for (int i = 0; i < 5; i++) 
@@ -42,6 +42,24 @@
             {
                 Console.WriteLine("- " + Task);
             }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 3 - Browsing History Stack
+
+            Stack <string> browserspagehistory = new Stack<string>();
+
+            for (int i = 0; i < 3; i++) 
+            {
+                Console.Write("Enter Website URL: ");
+                browserspagehistory.Push(Console.ReadLine());
+            }
+
+            string removedPage = browserspagehistory.Pop();
+
+            Console.WriteLine("Back from: " + removedPage);
+            Console.WriteLine("Current page: " + browserspagehistory.Peek());
         }
     }
 }
