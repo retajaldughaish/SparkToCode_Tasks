@@ -47,9 +47,9 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 3 - Browsing History Stack
-
+            /*
             Stack <string> browserspagehistory = new Stack<string>();
-
+            
             for (int i = 0; i < 3; i++) 
             {
                 Console.Write("Enter Website URL: ");
@@ -60,6 +60,22 @@
 
             Console.WriteLine("Back from: " + removedPage);
             Console.WriteLine("Current page: " + browserspagehistory.Peek());
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 4 - Customer Service Queue
+
+            Queue <string> customers = new Queue<string>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Enter Customer Name: ");
+                customers.Enqueue(Console.ReadLine());
+            }
+
+            String servedCustomer = customers.Dequeue();
+            Console.WriteLine("\nServed Customer Name: " +  servedCustomer);
         }
     }
 }
