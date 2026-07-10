@@ -137,7 +137,7 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 10 - Overloaded Area Calculator
-
+        /*
         public static double CalculateArea (double SideLength)
         {
             return SideLength * SideLength;
@@ -146,6 +146,49 @@
         public static double CalculateArea (double length, double width)
         {
             return length * width;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 11 - Function-Based Calculator
+
+        public static double Add (double An1, double An2)
+        {
+            return An1 + An2;
+        }
+
+        public static double Subtract (double Sn1, double Sn2)
+        {
+            return Sn1 - Sn2;
+        }
+
+        public static double MultiplyNumbers (double Mn1, double Mn2)
+        {
+            return Mn1 * Mn2;
+        }
+
+        public static double DivideNumbers (double Dn1, double Dn2)
+        {
+            try
+            {
+                if (Dn2 == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+
+                return Dn1 / Dn2;
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Cannot divide by zero.");
+                return 0;
+            }
+        }
+
+        public static void DisplayResult(string operation, double result)
+        {
+            Console.WriteLine(operation + " Result = " + result);
         }
 
         static void Main(string[] args)
@@ -295,7 +338,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 10 - Overloaded Area Calculator
-
+            /*
             Console.WriteLine("Welcome to Area Calculator");
             Console.WriteLine("1. Square");
             Console.WriteLine("2. Rectangle");
@@ -323,6 +366,86 @@
                 default:
                     Console.WriteLine("Invalid Choice, Please Enter 1 or 2");
                     break;
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 11 - Function-Based Calculator
+
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.WriteLine(" Calculator ");
+                Console.WriteLine("1. Add");
+                Console.WriteLine("2. Subtract");
+                Console.WriteLine("3. Multiply");
+                Console.WriteLine("4. Divide");
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option: ");
+
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Addition", Add(n1, n2));
+                            break;
+                        }
+
+                    case 2:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Subtraction", Subtract(n1, n2));
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Multiplication", MultiplyNumbers(n1, n2));
+                            break;
+                        }
+
+                    case 4:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Division", DivideNumbers(n1, n2));
+                            break;
+                        }
+
+                    case 5:
+                        exit = true;
+                        Console.WriteLine("Calculator Closed.");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
             }
         }
     }
