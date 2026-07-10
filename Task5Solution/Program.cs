@@ -65,7 +65,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 4 - Customer Service Queue
-
+            /*
             Queue <string> customers = new Queue<string>();
 
             for (int i = 0; i < 3; i++)
@@ -76,6 +76,34 @@
 
             String servedCustomer = customers.Dequeue();
             Console.WriteLine("\nServed Customer Name: " +  servedCustomer);
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 5 - Array Grade Range
+
+            int[] StudentGrade = new int[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Enter Grade {i + 1} : ");
+                StudentGrade[i] = int.Parse(Console.ReadLine());
+            }
+            
+            Array.Sort(StudentGrade);
+
+            int total = 0;
+
+            for (int i = 0; i < StudentGrade.Length; i++)
+            {
+                total += StudentGrade[i];
+            }
+
+            double averageStudentGrade = total / 5.0;
+
+            Console.WriteLine("The Lowest Grade is: " + StudentGrade[0]);
+            Console.WriteLine("The Highest Grade is: " + StudentGrade[4]);
+            Console.WriteLine("The Average Grade is: " + averageStudentGrade.ToString("F2"));
         }
     }
 }
