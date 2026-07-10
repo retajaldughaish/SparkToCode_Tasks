@@ -1,0 +1,518 @@
+﻿namespace Task4Solution
+{
+    internal class Program
+    {
+        // Problem 1 - Personalized Welcome Function
+        /*
+        public static void PrintWelcome (string name)
+        {
+            Console.WriteLine("Welcome, " + name + "! Have a great day!");
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 2 - Square Number Function
+        /*
+        public static int Square (int n)
+        {
+            return n * n;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        //Problem 3 - Celsius to Fahrenheit Function
+        /*
+        public static double CelsiusToFahrenheit (double C)
+        {
+            return (C * 9 / 5) + 32;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 4 - Fixed Menu Display Function
+        /*
+        public static void DisplayMenu()
+        {
+            Console.WriteLine("Main Menu");
+            Console.WriteLine("1. Start");
+            Console.WriteLine("2. Help");
+            Console.WriteLine("3. Exit");
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 5 - Even or Odd Function
+        /*
+        public static bool IsEven (int n)
+        {
+            return n % 2 == 0;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 6 - Rectangle Area & Perimeter Functions
+        /*
+        public static double CalculateArea (double length, double width)
+        {
+            return length * width;
+        }
+
+        public static double CalculatePerimeter (double length, double width)
+        {
+            return 2 * (length + width);
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 7 - Grade Letter Function
+        /*
+        public static string GetGradeLetter (int grade)
+        {
+            if (grade >= 0 && grade <= 49)
+            {
+                return "F";
+            }
+            else if (grade >= 50 && grade <= 59)
+            {
+                return "D";
+            }
+            else if (grade >= 60 && grade <= 69)
+            {
+                return "C";
+            }
+            else if (grade >= 70 && grade <= 79)
+            {
+                return "B";
+            }
+            else if (grade >= 80 && grade <=100)
+            {
+                return "A";
+            }
+            else
+            {
+                return "Invalid Grade";
+            }
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 8 - Countdown Function
+        /*
+        public static void Countdown (int num)
+        {
+            for (int i = num; i > 0; i--) 
+            {
+                Console.WriteLine (i);
+            }
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 9 - Overloaded Multiply Function
+        /*
+        public static int Multiply (int n1, int n2)
+        {
+            return n1 * n2;
+        }
+
+        public static double Multiply (double num1, double num2) 
+        {
+            return num1 * num2;
+        }
+
+        public static int Multiply (int N1, int N2, int N3)
+        {
+            return N1 * N2 * N3;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 10 - Overloaded Area Calculator
+        /*
+        public static double CalculateArea (double SideLength)
+        {
+            return SideLength * SideLength;
+        }
+
+        public static double CalculateArea (double length, double width)
+        {
+            return length * width;
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 11 - Function-Based Calculator
+        /*
+        public static double Add (double An1, double An2)
+        {
+            return An1 + An2;
+        }
+
+        public static double Subtract (double Sn1, double Sn2)
+        {
+            return Sn1 - Sn2;
+        }
+
+        public static double MultiplyNumbers (double Mn1, double Mn2)
+        {
+            return Mn1 * Mn2;
+        }
+
+        public static double DivideNumbers (double Dn1, double Dn2)
+        {
+            try
+            {
+                if (Dn2 == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+
+                return Dn1 / Dn2;
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Cannot divide by zero.");
+                return 0;
+            }
+        }
+
+        public static void DisplayResult(string operation, double result)
+        {
+            Console.WriteLine(operation + " Result = " + result);
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 12 - Student Report Card Generator
+
+        public static double CalculateAverage (double score1, double score2, double score3)
+        {
+            return (score1 + score2 + score3) / 3;
+        }
+
+        public static string GetGradeLetter (double average)
+        {
+            if (average >= 0 && average <= 49)
+            {
+                return "F";
+            }
+            else if (average >= 50 && average <= 59)
+            {
+                return "D";
+            }
+            else if (average >= 60 && average <= 69)
+            {
+                return "C";
+            }
+            else if (average >= 70 && average <= 79)
+            {
+                return "B";
+            }
+            else if (average >= 80 && average <= 100)
+            {
+                return "A";
+            }
+            else
+            {
+                return "Invalid Average Score";
+            }
+        }
+
+        public static void PrintReportCard (string Sname, double average, string GradeLetter)
+        {
+            Console.WriteLine("Student Name: " + Sname + "\nAverage Score: " + average.ToString("F2") +
+                  "\nGrade Letter: " + GradeLetter);
+        }
+        static void Main(string[] args)
+        {
+            // Problem 1 - Personalized Welcome Function
+            /*
+            Console.Write("Enter your name: ");
+            string name = Console.ReadLine();
+
+            PrintWelcome (name);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 2 - Square Number Function
+            /*
+            Console.Write("Enter a Number to be Squared: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            
+            int Result = Square(n);
+
+            Console.WriteLine("Squared Result = " + Result);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            //Problem 3 - Celsius to Fahrenheit Function
+            /*
+            Console.Write("Enter a Temperature Value in Celsius: ");
+            double C = double.Parse(Console.ReadLine());
+
+            double ResultInF = CelsiusToFahrenheit(C);
+
+            Console.WriteLine("Temperature in Fahrenheit = " + ResultInF);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 4 - Fixed Menu Display Function
+            /*
+            DisplayMenu();
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 5 - Even or Odd Function
+            /*
+            Console.Write("Enter a Number: ");
+            int n = int.Parse(Console.ReadLine());
+
+            if (IsEven(n))
+            {
+                Console.WriteLine("The Number is Even.");
+            }
+            else
+            {
+                Console.WriteLine("The Number is Odd.");
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 6 - Rectangle Area & Perimeter Functions
+            /*
+            Console.Write("Enter Rectangle Length: ");
+            double length = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter Rectangle Width: ");
+            double width = Convert.ToDouble(Console.ReadLine());
+
+            double area = CalculateArea(length, width);
+            double perimeter = CalculatePerimeter(length, width);
+
+            Console.WriteLine("Rectangle Area: " + area);
+            Console.WriteLine("Rectangle Perimeter: " + perimeter);
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 7 - Grade Letter Function
+            /*
+            Console.Write("Enter your Grade: ");
+            int grade = int.Parse(Console.ReadLine());
+
+            string letter = GetGradeLetter(grade);
+
+            if (letter == "Invalid Grade")
+            {
+                Console.WriteLine("Please enter a grade between 0 and 100.");
+            }
+            else
+            {
+                Console.WriteLine("Your Grade is: " + letter);
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 8 - Countdown Function
+            /*
+            Console.Write("Enter a Starting Number: ");
+            int num = int.Parse(Console.ReadLine());
+
+            if (num > 0)
+            {
+                Countdown(num);
+            }
+            else
+            {
+                Console.WriteLine("Please enter a positive number.");
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 9 - Overloaded Multiply Function
+            /*
+            Console.Write("Enter First Integer: ");
+            int n1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Second Integer: ");
+            int n2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Two int Parameters Multiplication: " + Multiply(n1, n2));
+            Console.WriteLine();
+
+            Console.Write("Enter First Decimal Number: ");
+            double num1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Second Decimal Number: ");
+            double num2 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Two double Parameters Multiplication: " + Multiply(num1, num2));
+            Console.WriteLine();
+
+            Console.Write("Enter First Integer: ");
+            int N1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Second Integer: ");
+            int N2 = int.Parse(Console.ReadLine());
+            Console.Write("Enter Third Integer: ");
+            int N3 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Result of Three int Parameters Multiplication: " + Multiply(N1, N2, N3));
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 10 - Overloaded Area Calculator
+            /*
+            Console.WriteLine("Welcome to Area Calculator");
+            Console.WriteLine("1. Square");
+            Console.WriteLine("2. Rectangle");
+            Console.Write("Choose A Shape to Calculate the Area: ");
+            int Choice = int.Parse(Console.ReadLine());
+
+            switch (Choice)
+            {
+                case 1:
+                    Console.Write("Enter the Side Length of the Square: ");
+                    double SideLength = double.Parse(Console.ReadLine());
+
+                    Console.Write("Square Area is: " + CalculateArea(SideLength));
+                    break;
+
+                case 2:
+                    Console.Write("Enter the Length: ");
+                    double length = double.Parse(Console.ReadLine());
+                    Console.Write("Enter the Width: ");
+                    double width = double.Parse(Console.ReadLine());
+
+                    Console.Write("Rectangle Area is: " + CalculateArea(length, width));
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Choice, Please Enter 1 or 2");
+                    break;
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 11 - Function-Based Calculator
+            /*
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.WriteLine(" Calculator ");
+                Console.WriteLine("1. Add");
+                Console.WriteLine("2. Subtract");
+                Console.WriteLine("3. Multiply");
+                Console.WriteLine("4. Divide");
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option: ");
+
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Addition", Add(n1, n2));
+                            break;
+                        }
+
+                    case 2:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Subtraction", Subtract(n1, n2));
+                            break;
+                        }
+
+                    case 3:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Multiplication", MultiplyNumbers(n1, n2));
+                            break;
+                        }
+
+                    case 4:
+                        {
+                            Console.Write("Enter First Number: ");
+                            double n1 = double.Parse(Console.ReadLine());
+
+                            Console.Write("Enter Second Number: ");
+                            double n2 = double.Parse(Console.ReadLine());
+
+                            DisplayResult("Division", DivideNumbers(n1, n2));
+                            break;
+                        }
+
+                    case 5:
+                        exit = true;
+                        Console.WriteLine("Calculator Closed.");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 12 - Student Report Card Generator
+
+            Console.Write("Enter your Full Name: ");
+            string Sname = Console.ReadLine();
+
+            Console.Write("Enter Subject 1 Score: ");
+            double score1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Subject 2 Score: ");
+            double score2 = double.Parse(Console.ReadLine());
+            Console.Write("Enter Subject 3 Score: ");
+            double score3 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            double Average = CalculateAverage(score1, score2, score3);
+            string GradeLetter = GetGradeLetter(Average);
+
+            PrintReportCard(Sname, Average, GradeLetter);
+
+        }
+    }
+}
