@@ -117,7 +117,7 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 9 - Overloaded Multiply Function
-
+        /*
         public static int Multiply (int n1, int n2)
         {
             return n1 * n2;
@@ -132,6 +132,22 @@
         {
             return N1 * N2 * N3;
         }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 10 - Overloaded Area Calculator
+
+        public static double CalculateArea (double SideLength)
+        {
+            return SideLength * SideLength;
+        }
+
+        public static double CalculateArea (double length, double width)
+        {
+            return length * width;
+        }
+
         static void Main(string[] args)
         {
             // Problem 1 - Personalized Welcome Function
@@ -246,7 +262,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 9 - Overloaded Multiply Function
-
+            /*
             Console.Write("Enter First Integer: ");
             int n1 = int.Parse(Console.ReadLine());
             Console.Write("Enter Second Integer: ");
@@ -274,6 +290,40 @@
 
             Console.WriteLine();
             Console.WriteLine("Result of Three int Parameters Multiplication: " + Multiply(N1, N2, N3));
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 10 - Overloaded Area Calculator
+
+            Console.WriteLine("Welcome to Area Calculator");
+            Console.WriteLine("1. Square");
+            Console.WriteLine("2. Rectangle");
+            Console.Write("Choose A Shape to Calculate the Area: ");
+            int Choice = int.Parse(Console.ReadLine());
+
+            switch (Choice)
+            {
+                case 1:
+                    Console.Write("Enter the Side Length of the Square: ");
+                    double SideLength = double.Parse(Console.ReadLine());
+
+                    Console.Write("Square Area is: " + CalculateArea(SideLength));
+                    break;
+
+                case 2:
+                    Console.Write("Enter the Length: ");
+                    double length = double.Parse(Console.ReadLine());
+                    Console.Write("Enter the Width: ");
+                    double width = double.Parse(Console.ReadLine());
+
+                    Console.Write("Rectangle Area is: " + CalculateArea(length, width));
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Choice, Please Enter 1 or 2");
+                    break;
+            }
         }
     }
 }
