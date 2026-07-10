@@ -71,7 +71,7 @@
         ////////////////////////////////////////////////////////////////////////
 
         // Problem 7 - Grade Letter Function
-
+        /*
         public static string GetGradeLetter (int grade)
         {
             if (grade >= 0 && grade <= 49)
@@ -97,6 +97,19 @@
             else
             {
                 return "Invalid Grade";
+            }
+        }
+        */
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // Problem 8 - Countdown Function
+
+        public static void Countdown (int num)
+        {
+            for (int i = num; i > 0; i--) 
+            {
+                Console.WriteLine (i);
             }
         }
         static void Main(string[] args)
@@ -177,7 +190,7 @@
             ////////////////////////////////////////////////////////////////////////
 
             // Problem 7 - Grade Letter Function
-
+            /*
             Console.Write("Enter your Grade: ");
             int grade = int.Parse(Console.ReadLine());
 
@@ -190,6 +203,23 @@
             else
             {
                 Console.WriteLine("Your Grade is: " + letter);
+            }
+            */
+
+            ////////////////////////////////////////////////////////////////////////
+
+            // Problem 8 - Countdown Function
+
+            Console.Write("Enter a Starting Number: ");
+            int num = int.Parse(Console.ReadLine());
+
+            if (num > 0)
+            {
+                Countdown(num);
+            }
+            else
+            {
+                Console.WriteLine("Please enter a positive number.");
             }
         }
     }
