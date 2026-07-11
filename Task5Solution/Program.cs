@@ -150,7 +150,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 7 - High Score Podium
-
+            /*
             List<int> gameScores = new List <int> ();
 
             for (int i = 0; i < 5; i++)
@@ -167,6 +167,42 @@
             Console.WriteLine("1st place: " + gameScores[0]);
             Console.WriteLine("2nd place: " + gameScores[1]);
             Console.WriteLine("3rd place: " + gameScores[2]);
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 8 - Undo Last Action
+
+            Stack <string> actions = new Stack<string>();
+
+            string action = "";
+
+            while (action != "stop")
+            {
+                Console.Write("Enter an action (or type 'stop'): ");
+                action = Console.ReadLine();
+
+                if (action != "stop")
+                {
+                    actions.Push(action);
+                }
+            }
+
+            Console.WriteLine();
+
+            String Undo1 = actions.Pop();
+            Console.WriteLine("First Undo: " + Undo1);
+
+            string Undo2 = actions.Pop();
+            Console.WriteLine("Second Undo: " + Undo2);
+
+            Console.WriteLine("\nRemaining Actions After Two Undos:");
+            Console.WriteLine();
+
+            foreach (string remainingAction in actions)
+            {
+                Console.WriteLine(remainingAction);
+            }
         }
     }
 }
