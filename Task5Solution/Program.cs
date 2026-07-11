@@ -2,6 +2,25 @@
 {
     internal class Program
     {
+        // Problem 9 - Grade Analyzer with Functions
+
+        public static double CalculateAverage(List <int> grades)
+        {
+            int total = 0;
+
+            for (int i = 0; i < grades.Count; i++)
+            {
+                total += grades[i];
+            }
+
+            return (double)total / grades.Count;
+        }
+
+        public static int FindFirstFailing(List <int> grades)
+        {
+            return grades.Find(x => x < 60);
+        }
+
         static void Main(string[] args)
         {
             // Problem 1 - Fixed Grades Array
@@ -172,7 +191,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 8 - Undo Last Action
-
+            /*
             Stack <string> actions = new Stack<string>();
 
             string action = "";
@@ -202,6 +221,36 @@
             foreach (string remainingAction in actions)
             {
                 Console.WriteLine(remainingAction);
+            }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 9 - Grade Analyzer with Functions
+
+            List<int> grades = new List<int>();
+
+            Console.Write("How many grades do you want to enter? ");
+            int numberOfGrades = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numberOfGrades; i++)
+            {
+                Console.Write($"Enter Grade {i + 1}: ");
+                grades.Add(int.Parse(Console.ReadLine()));
+            }
+
+            double average = CalculateAverage(grades);
+            int firstFailing = FindFirstFailing(grades);
+
+            Console.WriteLine("Average Grade: " + average);
+
+            if (firstFailing == 0)
+            {
+                Console.WriteLine("There are no failing grades.");
+            }
+            else
+            {
+                Console.WriteLine("First Failing Grade: " + firstFailing);
             }
         }
     }
