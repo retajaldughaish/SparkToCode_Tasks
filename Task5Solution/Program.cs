@@ -81,7 +81,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 5 - Array Grade Range
-
+            /*
             int[] StudentGrade = new int[5];
 
             for (int i = 0; i < 5; i++)
@@ -104,6 +104,47 @@
             Console.WriteLine("The Lowest Grade is: " + StudentGrade[0]);
             Console.WriteLine("The Highest Grade is: " + StudentGrade[4]);
             Console.WriteLine("The Average Grade is: " + averageStudentGrade.ToString("F2"));
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 6 - Filtered Shopping List
+
+            List <string> shoppinglist = new List <string> ();
+
+            string item = "";
+
+            while (item != "done")
+            {
+                Console.Write("Enter an item (or type 'done'): ");
+                item = Console.ReadLine();
+                if (item != "done") 
+                {
+                    shoppinglist.Add(item);
+                }
+                
+            }
+
+            Console.WriteLine("\nShopping List");
+            Console.WriteLine();
+
+            foreach (string itemInList in shoppinglist)
+            {
+                Console.WriteLine(itemInList);
+            }
+
+            Console.WriteLine();
+            Console.Write("What Item You Want to Remove: ");
+            string remove = Console.ReadLine();
+            shoppinglist.Remove(remove);
+
+            Console.WriteLine("\nShopping List After Removing an Item");
+            Console.WriteLine();
+
+            foreach (string After in shoppinglist)
+            {
+                Console.WriteLine(After);
+            }
         }
     }
 }
