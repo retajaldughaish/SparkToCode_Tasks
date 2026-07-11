@@ -3,7 +3,7 @@
     internal class Program
     {
         // Problem 9 - Grade Analyzer with Functions
-
+        /*
         public static double CalculateAverage(List <int> grades)
         {
             int total = 0;
@@ -19,6 +19,28 @@
         public static int FindFirstFailing(List <int> grades)
         {
             return grades.Find(x => x < 60);
+        }
+        */
+
+        ///////////////////////////////////////////////////////////////////////////
+
+        // Problem 10 - Print Queue Manager
+
+        public static Queue <string> RemoveJob (Queue <string> queue, string jobName)
+        {
+            Queue <string> updatedQueue = new Queue <string> ();
+
+            while (queue.Count > 0)
+            {
+                string currentJob = queue.Dequeue();
+
+                if (currentJob != jobName)
+                {
+                    updatedQueue.Enqueue(currentJob);
+                }
+            }
+
+            return updatedQueue;
         }
 
         static void Main(string[] args)
@@ -227,7 +249,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 9 - Grade Analyzer with Functions
-
+            /*
             List<int> grades = new List<int>();
 
             Console.Write("How many grades do you want to enter? ");
@@ -251,6 +273,45 @@
             else
             {
                 Console.WriteLine("First Failing Grade: " + firstFailing);
+            }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 10 - Print Queue Manager
+
+            Queue <string> printJobs = new Queue <string> ();
+
+            string job = "";
+
+            while (job != "done")
+            {
+                Console.Write("Enter a print job (or type 'done'): ");
+                job = Console.ReadLine();
+
+                if (job != "done")
+                {
+                    printJobs.Enqueue(job);
+                }
+            }
+
+            Console.WriteLine("\nPrint Queue Before Cancellation:");
+
+            foreach (string printJob in printJobs)
+            {
+                Console.WriteLine(printJob);
+            }
+
+            Console.Write("\nEnter the name of the job to cancel: ");
+            string cancelJob = Console.ReadLine();
+
+            printJobs = RemoveJob(printJobs, cancelJob);
+
+            Console.WriteLine("\nPrint Queue After Cancellation:");
+
+            foreach (string printJob in printJobs)
+            {
+                Console.WriteLine(printJob);
             }
         }
     }
