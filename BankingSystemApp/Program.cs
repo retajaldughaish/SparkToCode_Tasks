@@ -214,7 +214,23 @@ namespace BankingSystemApp
                   $"\nUpdated Balance: {balances[index]:F2}");
         }
 
-        static void ShowBalance() { }
+        static void ShowBalance() 
+        {
+            Console.Write("Enter Account Number: ");
+            string accountNumber = Console.ReadLine();
+
+            int index = accountNumbers.IndexOf(accountNumber);
+
+            if (index == -1)
+            {
+                Console.WriteLine("The Account does not Exist.");
+                return;
+            }
+
+            Console.WriteLine("Customer Name: " + customerNames[index]);
+            Console.WriteLine("Account Number: " + accountNumbers[index]);
+            Console.WriteLine($"Balance: {balances[index]:F2}");
+        }
 
         static void TransferAmount() { }
 
