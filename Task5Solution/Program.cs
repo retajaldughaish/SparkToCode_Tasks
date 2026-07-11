@@ -109,7 +109,7 @@
             ///////////////////////////////////////////////////////////////////////////
 
             // Problem 6 - Filtered Shopping List
-
+            /*
             List <string> shoppinglist = new List <string> ();
 
             string item = "";
@@ -145,6 +145,28 @@
             {
                 Console.WriteLine(After);
             }
+            */
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Problem 7 - High Score Podium
+
+            List<int> gameScores = new List <int> ();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Enter Game {i+1} Score: ");
+                gameScores.Add (int.Parse (Console.ReadLine()));
+            }
+
+            gameScores.Sort ();
+            gameScores.Reverse ();
+
+            Console.WriteLine();
+
+            Console.WriteLine("1st place: " + gameScores[0]);
+            Console.WriteLine("2nd place: " + gameScores[1]);
+            Console.WriteLine("3rd place: " + gameScores[2]);
         }
     }
 }
