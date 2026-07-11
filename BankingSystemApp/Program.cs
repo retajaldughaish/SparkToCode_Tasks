@@ -78,6 +78,11 @@ namespace BankingSystemApp
             }
         }
 
+        // ===================== BANKING SERVICE FUNCTIONS =====================
+        // Each function performs one banking operation by reading user input,
+        // validating the data, updating the account lists, and displaying the result.
+
+        // Service 1: Adds a new bank account after validating the customer information
         static void AddAccount() 
         {
             Console.Write("Enter Your Full Name: ");
@@ -132,6 +137,7 @@ namespace BankingSystemApp
             Console.WriteLine("Balance: " + initialBalance);
         }
 
+        // Service 2: Deposits money into an existing account after validating the account number and deposit amount
         static void DepositMoney() 
         {
             Console.Write("Enter Account Number: ");
@@ -169,6 +175,7 @@ namespace BankingSystemApp
             Console.WriteLine($"Deposit successful!\nUpdated Balance: {balances[index]:F2}");
         }
 
+        // Service 3: Withdraws money from an existing account if the account has sufficient balance
         static void WithdrawMoney() 
         {
             Console.Write("Enter Account Number: ");
@@ -214,6 +221,7 @@ namespace BankingSystemApp
                   $"\nUpdated Balance: {balances[index]:F2}");
         }
 
+        // Service 4: Displays the customer's account information and current balance
         static void ShowBalance() 
         {
             Console.Write("Enter Account Number: ");
@@ -232,7 +240,70 @@ namespace BankingSystemApp
             Console.WriteLine($"Balance: {balances[index]:F2}");
         }
 
-        static void TransferAmount() { }
+        // Service 5: Transfers money from one account to another after validating both accounts and the transfer amount
+        static void TransferAmount() 
+        {
+            Console.Write("Enter Sender Account Number: ");
+            String senderAccountNumber = Console.ReadLine();
+
+            int SenderIndex = accountNumbers.IndexOf(senderAccountNumber);
+
+            if (SenderIndex == -1)
+            {
+                Console.WriteLine("The Account does not Exist.");
+                return;
+            }
+
+            Console.Write("Enter Receiver Account Number: ");
+            string receiverAccountNumber = Console.ReadLine();
+
+            int ReceiverIndex = accountNumbers.IndexOf(receiverAccountNumber);
+
+            if (ReceiverIndex == -1)
+            {
+                Console.WriteLine("The Account does not Exist.");
+                return;
+            }
+
+            if (senderAccountNumber == receiverAccountNumber)
+            {
+                Console.WriteLine("Sender and receiver accounts cannot be the same.");
+                return;
+            }
+
+            double transferAmount = 0;
+
+            try
+            {
+                Console.Write("Enter Transfer Amount: ");
+                transferAmount = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please Enter Numbers Only.");
+                return;
+            }
+
+            if (transferAmount <= 0) 
+            {
+                Console.WriteLine("Transfer amount must be greater than zero.");
+                return;
+            }
+
+            if (transferAmount > balances[SenderIndex])
+            {
+                Console.WriteLine("Insufficient balance.");
+                return;
+            }
+
+            balances[SenderIndex] -= transferAmount;
+
+            balances[ReceiverIndex] += transferAmount;
+
+            Console.WriteLine($"Transfer completed successfully!" +
+                  $"\nSender Account Balance: {balances[SenderIndex]:F2}" +
+                  $"\nReceiver Account Balance: {balances[ReceiverIndex]:F2}");
+        }
 
         static void ListAllAccounts() { }
 
