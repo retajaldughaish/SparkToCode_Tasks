@@ -63,7 +63,7 @@ namespace BankingSystemApp
 
                         case 8:
                             exitApp = true;
-                            Console.WriteLine("Thank you for banking with Spark Bank.");
+                            Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
                             break;
 
                         default:
@@ -73,7 +73,7 @@ namespace BankingSystemApp
                 }
                 catch
                 {
-                    Console.WriteLine("Please enter numbers only.");
+                    Console.WriteLine("Invalid input, please choose between 1 and 8.");
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace BankingSystemApp
                 Console.Write("Enter Initial Balance: ");
                 initialBalance = double.Parse(Console.ReadLine());
             }
-            catch (FormatException)
+            catch 
             {
                 Console.WriteLine("Please Enter Numbers Only.");
                 return;
@@ -158,7 +158,7 @@ namespace BankingSystemApp
                 Console.Write("Enter Deposit Amount: ");
                 depositAmount = double.Parse(Console.ReadLine());
             }
-            catch (FormatException) 
+            catch 
             {
                 Console.WriteLine("Please Enter Numbers Only.");
                 return;
@@ -196,7 +196,7 @@ namespace BankingSystemApp
                 Console.Write("Enter Withdraw Amount: ");
                 withdrawAmount = double.Parse(Console.ReadLine());
             }
-            catch (FormatException)
+            catch 
             {
                 Console.WriteLine("Please Enter Numbers Only.");
                 return;
@@ -278,7 +278,7 @@ namespace BankingSystemApp
                 Console.Write("Enter Transfer Amount: ");
                 transferAmount = double.Parse(Console.ReadLine());
             }
-            catch (FormatException)
+            catch 
             {
                 Console.WriteLine("Please Enter Numbers Only.");
                 return;
@@ -326,6 +326,30 @@ namespace BankingSystemApp
             }
         }
 
-        static void CloseAccount() { }
+        // Service 7: Closes an existing account by removing it from the banking system
+        static void CloseAccount() 
+        {
+            Console.Write("Enter Account Number that you want to Remove: ");
+            string ClosingAccountNumber = Console.ReadLine();
+
+            int index = accountNumbers.IndexOf(ClosingAccountNumber);
+
+            if (index == -1)
+            {
+                Console.WriteLine("The Account does not Exist.");
+                return;
+            }
+
+            string removedCustomer = customerNames[index];
+            string removedAccount = accountNumbers[index];
+
+            customerNames.RemoveAt(index);
+            accountNumbers.RemoveAt(index);
+            balances.RemoveAt(index);
+
+            Console.WriteLine("Account closed successfully!");
+            Console.WriteLine($"Customer Name: {removedCustomer}");
+            Console.WriteLine($"Account Number: {removedAccount}");
+        }
     }
 }
