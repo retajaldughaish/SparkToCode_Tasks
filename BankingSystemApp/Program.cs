@@ -5,9 +5,9 @@ namespace BankingSystemApp
 {
     internal class Program
     {
-        static List <string> customerNames = new List <string>();
-        static List <string> accountNumbers = new List <string>();
-        static List <double> balances = new List <double>();
+        static List<string> customerNames = new List<string>();
+        static List<string> accountNumbers = new List<string>();
+        static List<double> balances = new List<double>();
 
         static void Main(string[] args)
         {
@@ -78,7 +78,59 @@ namespace BankingSystemApp
             }
         }
 
-        static void AddAccount() { }
+        static void AddAccount() 
+        {
+            Console.Write("Enter Your Full Name: ");
+            string customerName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(customerName))
+            {
+                Console.WriteLine("Customer Name Cannot be Empty.");
+                return;
+            }
+
+            Console.Write("Enter Account Number: ");
+            string accountNumber = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(accountNumber))
+            {
+                Console.WriteLine("Account Number Cannot be Empty.");
+                return;
+            }
+
+            if (accountNumbers.Contains(accountNumber)) 
+            {
+                Console.WriteLine("Account Number Already Exists.");
+                return;
+            }
+            double initialBalance = 0;
+            try 
+            {
+                Console.Write("Enter Initial Balance: ");
+                initialBalance = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please Enter Numbers Only.");
+                return;
+            }
+
+
+            if (initialBalance < 0) 
+            {
+                Console.WriteLine("The Initial Balance Must Not be Negative");
+                return;
+            }
+
+            customerNames.Add(customerName);
+            accountNumbers.Add(accountNumber);
+            balances.Add(initialBalance);
+
+            Console.WriteLine("\nAccount Created Successfully!");
+            Console.WriteLine("Customer Name: " + customerName);
+            Console.WriteLine("Account Number: " + accountNumber);
+            Console.WriteLine("Balance: " + initialBalance);
+        }
 
         static void DepositMoney() { }
 
