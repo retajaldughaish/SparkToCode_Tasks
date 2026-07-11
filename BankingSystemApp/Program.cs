@@ -305,7 +305,26 @@ namespace BankingSystemApp
                   $"\nReceiver Account Balance: {balances[ReceiverIndex]:F2}");
         }
 
-        static void ListAllAccounts() { }
+        // Service 6: Displays all customer accounts stored in the banking system
+        static void ListAllAccounts() 
+        {
+            if (accountNumbers.Count == 0)
+            {
+                Console.WriteLine("No accounts found.");
+                return;
+            }
+
+            Console.WriteLine("\n===== All Accounts =====");
+
+            for (int i = 0; i < accountNumbers.Count; i++)
+            {
+                Console.WriteLine($"Account {i + 1}");
+                Console.WriteLine($"Customer Name: {customerNames[i]}");
+                Console.WriteLine($"Account Number: {accountNumbers[i]}");
+                Console.WriteLine($"Balance: {balances[i]:F2}");
+                Console.WriteLine("--------------------------------");
+            }
+        }
 
         static void CloseAccount() { }
     }
