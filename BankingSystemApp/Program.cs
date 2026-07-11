@@ -169,7 +169,50 @@ namespace BankingSystemApp
             Console.WriteLine($"Deposit successful!\nUpdated Balance: {balances[index]:F2}");
         }
 
-        static void WithdrawMoney() { }
+        static void WithdrawMoney() 
+        {
+            Console.Write("Enter Account Number: ");
+            string accountNumber = Console.ReadLine();
+
+            int index = accountNumbers.IndexOf(accountNumber);
+
+            if (index == -1)
+            {
+                Console.WriteLine("The Account does not Exist.");
+                return;
+            }
+
+            double withdrawAmount = 0;
+
+            try
+            {
+                Console.Write("Enter Withdraw Amount: ");
+                withdrawAmount = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please Enter Numbers Only.");
+                return;
+            }
+
+            if (withdrawAmount <= 0)
+            {
+                Console.WriteLine("Withdraw amount must be greater than zero.");
+                return;
+            }
+
+            if (withdrawAmount > balances[index]) 
+            {
+                Console.WriteLine("Insufficient balance.");
+                return;
+            }
+
+            balances[index] -= withdrawAmount;
+
+            Console.WriteLine($"Withdrawal successful!" +
+                  $"\nWithdraw Amount: {withdrawAmount:F2}" +
+                  $"\nUpdated Balance: {balances[index]:F2}");
+        }
 
         static void ShowBalance() { }
 
