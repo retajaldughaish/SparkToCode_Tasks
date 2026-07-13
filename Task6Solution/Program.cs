@@ -345,12 +345,70 @@ namespace Task6Solution
 
         // --------------------------------- Cases 6-8 (Medium) -------------------------------------------------
 
+        // Register the Selected Student Using an Email Address.
+        static void RegisterStudent() 
+        {
+            Student chosen = ChooseStudent();
 
-        static void RegisterStudent() { }
-        static void CompareAccountBalances() { }
-        static void RestockProduct() { }
+            Console.Write("Enter your Email: ");
+            string email = Console.ReadLine();
+
+            chosen.Register(email);
+            Console.WriteLine("Email has been added successfully.");
+
+        }
+
+        // Compare the Balances of Both Bank Accounts.
+        static void CompareAccountBalances() 
+        {
+            if (account1.Balance > account2.Balance)
+            {
+                Console.WriteLine($"{account1.HolderName} (Account {account1.AccountNumber}) currently holds more money.");
+            }
+            else if (account2.Balance > account1.Balance)
+            {
+                Console.WriteLine($"{account2.HolderName} (Account {account2.AccountNumber}) currently holds more money.");
+            }
+            else
+            {
+                Console.WriteLine("Both accounts currently hold the same amount of money.");
+            }
+        }
+
+        // Restock the Selected Product and Display Its Stock Level.
+        static void RestockProduct() 
+        {
+            Product chosen = ChooseProduct();
+
+            Console.Write("Enter Quantity: ");
+            if (int.TryParse(Console.ReadLine(), out int quantity))
+            {
+                chosen.Restock(quantity);
+
+                int updatedStock = chosen.StockQuantity;
+                Console.WriteLine($"Updated Stock: {updatedStock}");
+
+                if (updatedStock < 10)
+                {
+                    Console.WriteLine("Stock Level: Low");
+                }
+                else if (updatedStock >= 10 && updatedStock <= 49)
+                {
+                    Console.WriteLine("Stock Level: Moderate");
+                }
+                else 
+                {
+                    Console.WriteLine("Stock Level: Well Stocked");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid quantity entered.");
+            }
+        }
 
         // --------------------------------- Cases 9-13 (Hard) -------------------------------------------------
+
 
         static void TransferBetweenAccounts() { }
         static void UpdateStudentGrade() { }
