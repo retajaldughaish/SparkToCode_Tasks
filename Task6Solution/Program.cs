@@ -96,12 +96,26 @@ namespace Task6Solution
             StudentCount++;
         }
 
-        private string PIN;
+        
+        public static int GetStudentCount()
+        {
+            return StudentCount;
+        }
 
+        private string PIN;
         public string SecurityPIN
         {
             set
             {
+                if (string.IsNullOrEmpty(value) || value.Length != 4)
+                    throw new ArgumentException("PIN must be exactly 4 digits.");
+
+                foreach (char c in value)
+                {
+                    if (!char.IsDigit(c))
+                        throw new ArgumentException("PIN must contain only digits.");
+                }
+
                 PIN = value;
             }
         }
@@ -256,55 +270,61 @@ namespace Task6Solution
         // Select and Return a Bank Account Object.
         static BankAccount ChooseAccount()
         {
-            Console.Write("Choose Account (1 or 2): ");
-
-            if (int.TryParse(Console.ReadLine(), out int input))
+            while (true)
             {
-                if (input == 1)
-                    return account1;
+                Console.Write("Choose Account (1 or 2): ");
 
-                if (input == 2)
-                    return account2;
+                if (int.TryParse(Console.ReadLine(), out int input))
+                {
+                    if (input == 1)
+                        return account1;
+
+                    if (input == 2)
+                        return account2;
+                }
+
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
             }
-
-            Console.WriteLine("Invalid input. Defaulting to Account 1.");
-            return account1;
         }
 
         // Select and Return a Student Object.
         static Student ChooseStudent()
         {
-            Console.Write("Choose Student (1 or 2): ");
-
-            if (int.TryParse(Console.ReadLine(), out int input))
+            while (true)
             {
-                if (input == 1)
-                    return student1;
+                Console.Write("Choose Student (1 or 2): ");
 
-                if (input == 2)
-                    return student2;
+                if (int.TryParse(Console.ReadLine(), out int input))
+                {
+                    if (input == 1)
+                        return student1;
+
+                    if (input == 2)
+                        return student2;
+                }
+
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
             }
-
-            Console.WriteLine("Invalid input. Defaulting to Student 1.");
-            return student1;
         }
 
         // Select and Return a Product Object.
         static Product ChooseProduct()
         {
-            Console.Write("Choose Product (1 or 2): ");
-
-            if (int.TryParse(Console.ReadLine(), out int input))
+            while (true)
             {
-                if (input == 1)
-                    return product1;
+                Console.Write("Choose Product (1 or 2): ");
 
-                if (input == 2)
-                    return product2;
+                if (int.TryParse(Console.ReadLine(), out int input))
+                {
+                    if (input == 1)
+                        return product1;
+
+                    if (input == 2)
+                        return product2;
+                }
+
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
             }
-
-            Console.WriteLine("Invalid input. Defaulting to Product 1.");
-            return product1;
         }
 
         // --------------------------------- Cases 1-5 (Easy) -------------------------------------------------
@@ -521,13 +541,13 @@ namespace Task6Solution
             Console.WriteLine($"Address: {chosen.Address}");
             Console.WriteLine($"Grade: {chosen.Grade}");
 
-            if (chosen.Grade >= 50)
+            if (chosen.Grade >= 60)
             {
-                Console.WriteLine("Status: Passed");
+                Console.WriteLine("Status: Pass");
             }
             else
             {
-                Console.WriteLine("Status: Failed");
+                Console.WriteLine("Status: Fail");
             }
         }
 
@@ -574,7 +594,10 @@ namespace Task6Solution
                 }
                 else
                 {
+                    int needed = quantity - chosen.StockQuantity;
+
                     Console.WriteLine("Not enough stock.");
+                    Console.WriteLine($"Need {needed} more units.");
                 }
             }
             else
@@ -639,27 +662,96 @@ namespace Task6Solution
         // --------------------------------- Cases 16-19 (Self-Research) -------------------------------------------------
 
         // Open a New Bank Account Using a Parameterized Constructor.
-        static void QuickAccountOpening() 
+        static void QuickAccountOpening()
         {
-            
+            Console.Write("Enter new Account Number: ");
+            if (!int.TryParse(Console.ReadLine(), out int accountNumber))
+            {
+                Console.WriteLine("Invalid account number.");
+                return;
+            }
+
+            Console.Write("Enter Holder Name: ");
+            string holderName = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(holderName))
+            {
+                Console.WriteLine("Holder name cannot be empty.");
+                return;
+            }
+
+            Console.Write("Enter Starting Balance: ");
+            if (!double.TryParse(Console.ReadLine(), out double startingBalance) || startingBalance < 0)
+            {
+                Console.WriteLine("Starting balance cannot be negative.");
+                return;
+            }
+
+            BankAccount newAccount = new BankAccount(accountNumber, holderName, startingBalance);
+
+            Console.WriteLine("New account created:");
+            Console.WriteLine($"Account Number: {newAccount.AccountNumber}");
+            Console.WriteLine($"Holder Name: {newAccount.HolderName}");
+            Console.WriteLine($"Balance: {newAccount.Balance:F2}");
         }
 
         // Display the Total Number of Students Using Static Counter.
-        static void TotalStudentsCounter() 
+        static void TotalStudentsCounter()
         {
-
+            int total = Student.GetStudentCount();
+            Console.WriteLine($"Total Students Created: {total}");
         }
 
         // Check if the Account is Overdrawn Using a Read-Only Property.
-        static void OverdrawnAccountCheck() 
+        static void OverdrawnAccountCheck()
         {
-            
+            BankAccount chosen = ChooseAccount();
+
+            Console.WriteLine($"Account Number: {chosen.AccountNumber}");
+            Console.WriteLine($"Account Holder: {chosen.HolderName}");
+            Console.WriteLine($"Balance: {chosen.Balance:F2}");
+
+            if (chosen.IsOverdrawn)
+            {
+                Console.WriteLine("Account Status: Overdrawn");
+            }
+            else
+            {
+                Console.WriteLine("Account Status: Not overdrawn");
+            }
         }
 
         // Set the Student Security PIN Using a Write-Only Property.
         static void SetStudentSecurityPin() 
         {
+            Student chosen = ChooseStudent();
+
+            Console.Write("Enter New Security PIN: ");
+            string pin = Console.ReadLine();
+
             
+            if (string.IsNullOrEmpty(pin) || pin.Length != 4)
+            {
+                Console.WriteLine("PIN must be exactly 4 digits.");
+                return;
+            }
+            foreach (char c in pin)
+            {
+                if (!char.IsDigit(c))
+                {
+                    Console.WriteLine("PIN must contain only digits.");
+                    return;
+                }
+            }
+
+            try
+            {
+                chosen.SecurityPIN = pin; 
+                Console.WriteLine("Security PIN has been set successfully.");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
