@@ -275,21 +275,97 @@ namespace Task6Solution
             return product1;
         }
 
-        static void ViewAccountDetails() { }
-        static void UpdateStudentAddress() { }
-        static void MakeDeposit() { }
-        static void MakeWithdrawal() { }
-        static void ViewProductDetails() { }
+        // --------------------------------- Cases 1-5 (Easy) -------------------------------------------------
+
+        // Display the Selected Account Information and Balance.
+        static void ViewAccountDetails() 
+        {
+            BankAccount chosen = ChooseAccount();
+            chosen.CheckBalance();
+        }
+
+        // Update the Address of the Selected Student.
+        static void UpdateStudentAddress() 
+        {
+            Student selectedStudent = ChooseStudent();
+
+            Console.Write("Enter The New Address: ");
+            string newAddress = Console.ReadLine();
+
+            string oldAddress = selectedStudent.Address;
+
+            selectedStudent.Address = newAddress;
+
+            Console.WriteLine("Address Updated Successfully.");
+            Console.WriteLine("Old Address: " + oldAddress);
+            Console.WriteLine("Updated Address: " + selectedStudent.Address);
+        }
+
+        // Deposit Money into the Selected Bank Account.
+        static void MakeDeposit()
+        {
+            BankAccount chosen = ChooseAccount();
+            Console.Write("Enter Amount to Deposit: ");
+            if (double.TryParse(Console.ReadLine(), out double amount))
+            {
+                chosen.Deposit(amount);
+                Console.WriteLine($"New Balance: {chosen.Balance:F2}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount entered.");
+            }
+        }
+
+        // Withdraw Money from the Selected Bank Account.
+        static void MakeWithdrawal() 
+        {
+            BankAccount chosen = ChooseAccount();
+            Console.Write("Enter Amount to Withdraw: ");
+            if (double.TryParse(Console.ReadLine(), out double amount))
+            {
+                chosen.Withdraw(amount);
+                Console.WriteLine($"New Balance: {chosen.Balance:F2}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount entered.");
+            }
+        }
+
+        // Display the Selected Product Details and Inventory Value.
+        static void ViewProductDetails() 
+        {
+            Product chosen = ChooseProduct();
+
+            double inventoryValue = chosen.GetInventoryValue();
+
+            Console.WriteLine($"Inventory Value: {inventoryValue:F3}");
+        }
+
+        // --------------------------------- Cases 6-8 (Medium) -------------------------------------------------
+
+
         static void RegisterStudent() { }
         static void CompareAccountBalances() { }
         static void RestockProduct() { }
+
+        // --------------------------------- Cases 9-13 (Hard) -------------------------------------------------
+
         static void TransferBetweenAccounts() { }
         static void UpdateStudentGrade() { }
         static void StudentReportCard() { }
         static void AccountHealthStatus() { }
         static void BulkSaleWithRevenue() { }
+
+        // --------------------------------- Cases 14-15 (Advanced) -------------------------------------------------
+
         static void ScholarshipEligibilityCheck() { }
         static void FullBalanceTopUpFlow() { }
+
+
+        // --------------------------------- Cases 16-19 (Self-Research) -------------------------------------------------
+
         static void QuickAccountOpening() { }
         static void TotalStudentsCounter() { }
         static void OverdrawnAccountCheck() { }
