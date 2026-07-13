@@ -409,24 +409,186 @@ namespace Task6Solution
 
         // --------------------------------- Cases 9-13 (Hard) -------------------------------------------------
 
+        // Transfer Money Between Two Bank Accounts.
+        static void TransferBetweenAccounts()
+        {
+            Console.WriteLine("Select Source Account");
+            BankAccount source = ChooseAccount();
 
-        static void TransferBetweenAccounts() { }
-        static void UpdateStudentGrade() { }
-        static void StudentReportCard() { }
-        static void AccountHealthStatus() { }
-        static void BulkSaleWithRevenue() { }
+            Console.WriteLine("Select Destination Account");
+            BankAccount destination = ChooseAccount();
+
+            if (source == destination)
+            {
+                Console.WriteLine("Cannot transfer money to the same account.");
+                return;
+            }
+
+            Console.Write("Enter Amount to Transfer: ");
+
+            if (double.TryParse(Console.ReadLine(), out double amount))
+            {
+                if (amount <= 0)
+                {
+                    Console.WriteLine("Invalid amount.");
+                }
+                else if (source.Balance >= amount)
+                {
+                    source.Withdraw(amount);
+                    destination.Deposit(amount);
+
+                    Console.WriteLine("Transfer completed successfully.");
+
+                    Console.WriteLine($"Source Account ({source.AccountNumber}) New Balance: {source.Balance:F2}");
+                    Console.WriteLine($"Destination Account ({destination.AccountNumber}) New Balance: {destination.Balance:F2}");
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient funds in source account.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount entered.");
+            }
+        }
+
+        // Update the Grade of the Selected Student with Validation.
+        static void UpdateStudentGrade() 
+        {
+            Student chosen = ChooseStudent();
+
+            Console.Write("Enter New Grade: ");
+
+            if (int.TryParse(Console.ReadLine(), out int grade))
+            {
+                if (grade >= 0 && grade <= 100)
+                {
+                    chosen.Grade = grade;
+                    Console.WriteLine("Grade Updated Successfully.");
+                    Console.WriteLine($"New Grade: {chosen.Grade}");
+                }
+                else
+                {
+                    Console.WriteLine("Grade must be between 0 and 100.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade entered.");
+            }
+        }
+
+        // Display the Selected Student Report Card.
+        static void StudentReportCard() 
+        {
+            Student chosen = ChooseStudent();
+
+            Console.WriteLine("\n===== Student Report Card =====");
+            Console.WriteLine($"Name: {chosen.Name}");
+            Console.WriteLine($"Address: {chosen.Address}");
+            Console.WriteLine($"Grade: {chosen.Grade}");
+
+            if (chosen.Grade >= 50)
+            {
+                Console.WriteLine("Status: Passed");
+            }
+            else
+            {
+                Console.WriteLine("Status: Failed");
+            }
+        }
+
+        // Check the Financial Health Status of a Bank Account.
+        static void AccountHealthStatus() 
+        {
+            BankAccount chosen = ChooseAccount();
+
+            Console.WriteLine($"Current Balance: {chosen.Balance:F2}");
+
+            if (chosen.Balance >= 0 && chosen.Balance <50)
+            {
+                Console.WriteLine("Account Status: Low Balance");
+            }
+            else if (chosen.Balance >= 50 && chosen.Balance <= 1000)
+            {
+                Console.WriteLine("Account Status: Healthy");
+            }
+            else  
+            {
+                Console.WriteLine("Account Status: Premium");
+            }
+            
+        }
+
+        // Perform a Bulk Product Sale and Calculate Total Revenue.
+        static void BulkSaleWithRevenue() 
+        {
+            Product chosen = ChooseProduct();
+
+            Console.Write("Enter Quantity Sold: ");
+
+            if (int.TryParse(Console.ReadLine(), out int quantity))
+            {
+                if (chosen.StockQuantity >= quantity)
+                {
+                    double revenue = chosen.Price * quantity;
+
+                    chosen.Sell(quantity);
+
+                    Console.WriteLine($"Sale Completed.");
+                    Console.WriteLine($"Total Revenue: {revenue:F3}");
+                    Console.WriteLine($"Remaining Stock: {chosen.StockQuantity}");
+                }
+                else
+                {
+                    Console.WriteLine("Not enough stock.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid quantity.");
+            }
+        }
 
         // --------------------------------- Cases 14-15 (Advanced) -------------------------------------------------
 
-        static void ScholarshipEligibilityCheck() { }
-        static void FullBalanceTopUpFlow() { }
+        // Check if the Student is Eligible for a Scholarship.
+        static void ScholarshipEligibilityCheck() 
+        {
 
+        }
+
+        // Perform a Complete Balance Top-Up Process.
+        static void FullBalanceTopUpFlow() 
+        {
+
+        }
 
         // --------------------------------- Cases 16-19 (Self-Research) -------------------------------------------------
 
-        static void QuickAccountOpening() { }
-        static void TotalStudentsCounter() { }
-        static void OverdrawnAccountCheck() { }
-        static void SetStudentSecurityPin() { }
+        // Open a New Bank Account Using a Parameterized Constructor.
+        static void QuickAccountOpening() 
+        {
+            
+        }
+
+        // Display the Total Number of Students Using Static Counter.
+        static void TotalStudentsCounter() 
+        {
+
+        }
+
+        // Check if the Account is Overdrawn Using a Read-Only Property.
+        static void OverdrawnAccountCheck() 
+        {
+            
+        }
+
+        // Set the Student Security PIN Using a Write-Only Property.
+        static void SetStudentSecurityPin() 
+        {
+            
+        }
     }
 }
