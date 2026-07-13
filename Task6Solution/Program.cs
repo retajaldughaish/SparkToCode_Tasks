@@ -3,7 +3,7 @@
 namespace Task6Solution
 {
     // BankAccount Class Created
-    public class BankAccount
+    public class BankAccount 
     {
         public int AccountNumber { get; set;  }
         public string HolderName { get; set; }
@@ -52,6 +52,21 @@ namespace Task6Solution
         {
             Console.WriteLine("Email Notification Sent.");
         }
+
+        public BankAccount(int accountNumber, string holderName, double balance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = balance;
+        }
+
+        public bool IsOverdrawn
+        {
+            get
+            {
+                return Balance < 0;
+            }
+        }
     }
 
     // Student Class Created
@@ -72,6 +87,23 @@ namespace Task6Solution
         private void SendEmail()
         {
             Console.WriteLine("Email Notification Sent.");
+        }
+
+        public static int StudentCount = 0;
+
+        public Student()
+        {
+            StudentCount++;
+        }
+
+        private string PIN;
+
+        public string SecurityPIN
+        {
+            set
+            {
+                PIN = value;
+            }
         }
     }
 
@@ -131,8 +163,8 @@ namespace Task6Solution
     public class Program
     {
         // Create BankAccount Class Objects
-        static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "Retaj", Balance = 120 };
-        static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 63 };
+        static BankAccount account1 = new BankAccount ( 1163, "Retaj", 120 );
+        static BankAccount account2 = new BankAccount ( 15203, "Ali", 63 );
 
         // Create Student Class Objects
         static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
@@ -556,13 +588,52 @@ namespace Task6Solution
         // Check if the Student is Eligible for a Scholarship.
         static void ScholarshipEligibilityCheck() 
         {
+            Student chosenStudent = ChooseStudent();
+            BankAccount chosenAccount = ChooseAccount();
 
+            Console.WriteLine($"Student Name: {chosenStudent.Name}");
+            Console.WriteLine($"Grade: {chosenStudent.Grade}");
+            Console.WriteLine($"Account Holder: {chosenAccount.HolderName}");
+            Console.WriteLine($"Account Balance: {chosenAccount.Balance:F2}");
+
+            bool gradeOk = chosenStudent.Grade >= 80;
+            bool balanceOk = chosenAccount.Balance >= 100;
+
+            if (gradeOk && balanceOk)
+            {
+                Console.WriteLine("Scholarship Status: Eligible");
+            }
+            else
+            {
+                Console.WriteLine("Scholarship Status: Not Eligible");
+                if (!gradeOk)
+                    Console.WriteLine("Reason: Student grade is below 80.");
+                if (!balanceOk)
+                    Console.WriteLine("Reason: Account balance is below 100.");
+            }
         }
 
         // Perform a Complete Balance Top-Up Process.
-        static void FullBalanceTopUpFlow() 
+        static void FullBalanceTopUpFlow()
         {
+            BankAccount chosen = ChooseAccount();
 
+            double before = chosen.Balance;
+            Console.WriteLine($"Current Balance: {before:F2}");
+
+            if (before < 50)
+            {
+                double topUp = 100 - before;
+                chosen.Deposit(topUp);
+
+                Console.WriteLine($"Top-up Amount: {topUp:F2}");
+                Console.WriteLine($"Balance Before: {before:F2}");
+                Console.WriteLine($"Balance After: {chosen.Balance:F2}");
+            }
+            else
+            {
+                Console.WriteLine("No top-up is needed.");
+            }
         }
 
         // --------------------------------- Cases 16-19 (Self-Research) -------------------------------------------------
