@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HotelManagementSystem
 {
@@ -156,31 +158,183 @@ namespace HotelManagementSystem
             // Case 01 Add New Room 
             static void AddNewRoom()
             {
+                Console.Write("Enter A Room Number: ");
+                string roomNumber = Console.ReadLine()?.Trim();
 
+                if (string.IsNullOrEmpty(roomNumber) || !int.TryParse(roomNumber, out int rn) || rn <= 0)
+                {
+                    Console.WriteLine("Invalid input. Room number must be a positive number.");
+                    return;
+                }
+
+                if (rooms.Any(r => r.RoomNumber == roomNumber))
+                {
+                    Console.WriteLine("A Room with that Number Already Exists.");
+                    return;
+                }
+
+                Console.Write("Enter Room Type (Single/Double/Suite): ");
+                string roomTypeInput = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(roomTypeInput))
+                {
+                    Console.WriteLine("Room Type Cannot Be Empty.");
+                    return;
+                }
+
+                string[] allowedTypes = new[] { "Single", "Double", "Suite" };
+                string roomType = allowedTypes.FirstOrDefault(t => t.Equals(roomTypeInput, StringComparison.OrdinalIgnoreCase));
+                if (roomType == null)
+                {
+                    Console.WriteLine("Invalid room type. Must be Single, Double, or Suite.");
+                    return;
+                }
+
+                Console.Write("Enter Price Per Night: ");
+                string priceInput = Console.ReadLine()?.Trim();
+                if (!double.TryParse(priceInput, out double price) || price <= 0)
+                {
+                    Console.WriteLine("Invalid Input. Price must be a Positive Number.");
+                    return;
+                }
+
+                var newRoomObj = new Room(roomNumber, roomType, price, true);
+                rooms.Add(newRoomObj);
+
+                Console.WriteLine("Room Added Successfully.");
+                newRoomObj.DisplayRoom();
+                Console.WriteLine($"Total Rooms: {rooms.Count}");
             }
 
             // Case 02 Register New Guest
             static void RegisterNewGuest()
             {
+                Console.Write("Enter Guest Name: ");
+                string guestName = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(guestName))
+                {
+                    Console.WriteLine("Guest Name Cannot Be Empty.");
+                    return;
+                }
 
+                Console.Write("Enter Check-In Date: ");
+                string checkInDate = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(checkInDate))
+                {
+                    Console.WriteLine("Check-In date cannot be empty.");
+                    return;
+                }
+
+                Console.Write("Enter Number of Nights: ");
+                string nightsInput = Console.ReadLine()?.Trim();
+                if (!int.TryParse(nightsInput, out int totalNights) || totalNights <= 0)
+                {
+                    Console.WriteLine("Invalid input. Number of nights must be a positive integer.");
+                    return;
+                }
+
+                string guestId = $"G{(guests.Count + 1).ToString("D3")}";
+
+                Guest newGuest = new Guest(guestId, guestName, "Not Assigned", checkInDate, totalNights);
+                guests.Add(newGuest);
+
+                Console.WriteLine("Guest registered successfully.");
+                newGuest.DisplayGuest();
+                Console.WriteLine($"Total Guests: {guests.Count}");
             }
 
             // Case 03 Book a Room for a Guest 
             static void BookRoomForGuest()
             {
+                Console.Write("Enter Guest ID (e.g. G001): ");
+                string guestId = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(guestId))
+                {
+                    Console.WriteLine("Guest ID Cannot Be Empty.");
+                    return;
+                }
 
+                Console.Write("Enter Desired Room Number: ");
+                string roomNumber = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(roomNumber))
+                {
+                    Console.WriteLine("Room Number Cannot Be Empty.");
+                    return;
+                }
+
+                var guest = guests.FirstOrDefault(g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+                if (guest == null)
+                {
+                    Console.WriteLine("Guest Not Found.");
+                    return;
+                }
+
+                var room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+                if (room == null)
+                {
+                    Console.WriteLine("Room Not Found.");
+                    return;
+                }
+
+                if (!room.IsAvailable)
+                {
+                    Console.WriteLine("Room is Already Booked.");
+                    return;
+                }
+
+                guest.RoomNumber = room.RoomNumber;
+                room.IsAvailable = false;
+
+                Console.WriteLine("Booking confirmed:");
+                Console.WriteLine($"Guest Name   : {guest.GuestName}");
+                Console.WriteLine($"Guest ID     : {guest.GuestId}");
+                Console.WriteLine($"Room Number  : {room.RoomNumber}");
+                Console.WriteLine($"Room Type    : {room.RoomType}");
+                Console.WriteLine($"Price/Night  : {room.PricePerNight:F2} OMR");
+                Console.WriteLine($"Total Nights : {guest.TotalNights}");
+                double totalCost = guest.CalculateTotalCost(room.PricePerNight);
+                Console.WriteLine($"Total Cost   : {totalCost:F2} OMR");
             }
 
             // Case 04 View All Rooms 
             static void ViewAllRooms()
             {
+                if (rooms.Count == 0)
+                {
+                    Console.WriteLine("No rooms have been added yet.");
+                    return;
+                }
 
+                Console.WriteLine($"Total Rooms: {rooms.Count}");
+
+                var ordered = rooms.OrderBy(r => r.RoomNumber).ToList();
+
+                foreach (var r in ordered)
+                {
+                    Console.WriteLine("------------------------------");
+                    r.DisplayRoom();
+                }
+                Console.WriteLine("------------------------------");
             }
 
             // Case 05 View All Guests 
             static void ViewAllGuests()
             {
+                if (guests.Count == 0)
+                {
+                    Console.WriteLine("No guests have been registered yet.");
+                    return;
+                }
 
+                Console.WriteLine($"Total Guests: {guests.Count}");
+
+                var ordered = guests.OrderBy(g => g.GuestName).ToList();
+
+                foreach (var g in ordered)
+                {
+                    Console.WriteLine("------------------------------");
+                    g.DisplayGuest();
+                }
+                Console.WriteLine("------------------------------");
             }
 
             // --------------------------------- Cases 6 - 10 (MEDIUM) ------------------------------------------------ 
