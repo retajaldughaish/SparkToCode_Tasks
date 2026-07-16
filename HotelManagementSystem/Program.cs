@@ -4,64 +4,6 @@ using System.Linq;
 
 namespace HotelManagementSystem
 {
-    // Room Class
-    public class Room
-    {
-        public string RoomNumber { get; set; }
-        public string RoomType { get; set; }
-        public double PricePerNight { get; set; }
-        public bool IsAvailable { get; set; }
-
-        public Room(string roomNumber, string roomType, double  pricePerNight, bool isAvailable)
-        {
-            RoomNumber = roomNumber;
-            RoomType = roomType;
-            PricePerNight = pricePerNight;
-            IsAvailable = isAvailable;
-        }
-
-        public void DisplayRoom()
-        {
-            Console.WriteLine($"Room Number : {RoomNumber}");
-            Console.WriteLine($"Room Type   : {RoomType}");
-            Console.WriteLine($"Price       : {PricePerNight:F2} OMR");
-            Console.WriteLine($"Status      : {(IsAvailable ? "Available" : "Booked")}");
-        }
-    }
-
-    // Guest Class
-    public class Guest
-    {
-        public string GuestId { get; set; }
-        public string GuestName { get; set; }
-        public string RoomNumber { get; set; }
-        public string CheckInDate { get; set; }
-        public int TotalNights { get; set; }
-
-        public Guest(string guestId, string guestName, string roomNumber, string checkInDate, int totalNights)
-        {
-            GuestId = guestId;
-            GuestName = guestName;
-            RoomNumber = roomNumber;
-            CheckInDate = checkInDate;
-            TotalNights = totalNights;
-        }
-
-        public void DisplayGuest()
-        {
-            Console.WriteLine($"Guest ID    : {GuestId}");
-            Console.WriteLine($"Guest Name  : {GuestName}");
-            Console.WriteLine($"Room Number : {RoomNumber}");
-            Console.WriteLine($"Check In    : {CheckInDate}");
-            Console.WriteLine($"Total Nights: {TotalNights}");
-        }
-
-        public double CalculateTotalCost(double pricePerNight)
-        {
-            return pricePerNight * TotalNights;
-        }
-    }
-
     public class Program
     {
         // Hotel Lists
