@@ -578,31 +578,245 @@ namespace HotelManagementSystem
             // Case 11 Check Out a Guest 
             static void CheckOutGuest()
             {
+                Console.Write("Enter Guest ID to Check out: ");
+                string guestId = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(guestId)) 
+                {
+                    Console.WriteLine("Guest ID Cannot be empty.");
+                    return;
+                }
 
+                var guest =guests.FirstOrDefault(g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+                if (guest == null) 
+                {
+                    Console.WriteLine("Guest Not Found.");
+                    return;
+                }
+
+                if (guest.RoomNumber == "Not Assigned")
+                {
+                    Console.WriteLine("This guest has no active booking.");
+                    return;
+                }
+
+                var room = rooms.FirstOrDefault(r => r.RoomNumber == guest.RoomNumber);
+                if (room == null) 
+                {
+                    Console.WriteLine("Room not found.");
+                    return;
+                }
+
+                double totalCost = guest.CalculateTotalCost(room.PricePerNight);
+                Console.WriteLine("\n========== FINAL BILL ==========");
+                Console.WriteLine($"Guest Name    : {guest.GuestName}");
+                Console.WriteLine($"Room Number   : {room.RoomNumber}");
+                Console.WriteLine($"Room Type     : {room.RoomType}");
+                Console.WriteLine($"Check In      : {guest.CheckInDate}");
+                Console.WriteLine($"Total Nights  : {guest.TotalNights}");
+                Console.WriteLine($"Price/Night   : {room.PricePerNight:F2} OMR");
+                Console.WriteLine($"Total Cost    : {totalCost:F2} OMR");
+                Console.WriteLine("================================");
+
+                Console.Write("Confirm checkout? (Y/N): ");
+                string confirm = Console.ReadLine()?.Trim();
+
+                if (string.Equals(confirm, "Y", StringComparison.OrdinalIgnoreCase))
+                {
+                    room.IsAvailable = true;
+                    guests.Remove(guest);
+
+                    Console.WriteLine("Checkout completed successfully.");
+                    Console.WriteLine($"Total Guests Remaining: {guests.Count()}");
+                    Console.WriteLine($"Total Rooms: {rooms.Count()}");
+
+                    bool isNowAvailable = rooms.Any(r => r.RoomNumber == room.RoomNumber && r.IsAvailable);
+                    Console.WriteLine($"Room {room.RoomNumber} is now available: {isNowAvailable}");
+                }
+                else if (string.Equals(confirm, "N", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Checkout cancelled. No changes were made.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please enter Y or N.");
+                }
             }
 
             // Case 12 Remove Unavailable Rooms
             static void RemoveUnavailableRooms()
             {
+                var removable = rooms
+                    .Where(r => !r.IsAvailable &&
+                                !guests.Any(g => g.RoomNumber.Equals(r.RoomNumber, StringComparison.OrdinalIgnoreCase)))
+                    .OrderBy(r => r.RoomNumber)
+                    .ToList();
 
+                if (!removable.Any())
+                {
+                    Console.WriteLine("All unavailable rooms are currently occupied. No rooms can be decommissioned.");
+                    return;
+                }
+
+                Console.WriteLine($"Found {removable.Count} removable room(s):");
+
+                foreach (var room in removable)
+                {
+                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine($"Room Number : {room.RoomNumber}");
+                    Console.WriteLine($"Room Type   : {room.RoomType}");
+                    Console.WriteLine($"Price       : {room.PricePerNight:F2} OMR");
+                }
+
+                Console.WriteLine("--------------------------------");
+
+                Console.Write($"Confirm removal of these {removable.Count} room(s)? (Y/N): ");
+                string input = Console.ReadLine()?.Trim();
+
+                if (string.Equals(input, "Y", StringComparison.OrdinalIgnoreCase))
+                {
+                    int removedCount = rooms.RemoveAll(r =>
+                        !r.IsAvailable &&
+                        !guests.Any(g => g.RoomNumber.Equals(r.RoomNumber, StringComparison.OrdinalIgnoreCase)));
+
+                    Console.WriteLine($"{removedCount} room(s) removed successfully.");
+                    Console.WriteLine($"Updated Total Rooms: {rooms.Count}");
+
+                    var remainingRooms = rooms
+                        .OrderBy(r => r.RoomNumber)
+                        .Select(r => new
+                        {
+                            r.RoomNumber,
+                            r.RoomType
+                        });
+
+                    Console.WriteLine("\nRemaining Rooms:");
+
+                    foreach (var room in remainingRooms)
+                    {
+                        Console.WriteLine($"Room Number: {room.RoomNumber} | Room Type: {room.RoomType}");
+                    }
+                }
+                else if (string.Equals(input, "N", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("No rooms were removed.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please enter Y or N.");
+                }
             }
 
             // Case 13 Extend Guest Stay 
             static void ExtendGuestStay()
             {
+                Console.Write("Enter Guest ID: ");
+                string guestId = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(guestId))
+                {
+                    Console.WriteLine("Guest ID cannot be empty.");
+                    return;
+                }
 
+                var guest = guests.FirstOrDefault(g => g.GuestId.Equals(guestId, StringComparison.OrdinalIgnoreCase));
+                if (guest == null)
+                {
+                    Console.WriteLine("Guest not found.");
+                    return;
+                }
+
+                if (guest.RoomNumber == "Not Assigned")
+                {
+                    Console.WriteLine("This guest has no active booking to extend.");
+                    return;
+                }
+
+                var room = rooms.FirstOrDefault(r => r.RoomNumber == guest.RoomNumber);
+                if (room == null)
+                {
+                    Console.WriteLine("Linked room not found.");
+                    return;
+                }
+
+                Console.Write("Enter number of additional nights: ");
+                string nightsInput = Console.ReadLine()?.Trim();
+                if (!int.TryParse(nightsInput, out int additionalNights) || additionalNights <= 0)
+                {
+                    Console.WriteLine("Invalid input. Number of nights must be a positive integer.");
+                    return;
+                }
+
+                guest.TotalNights += additionalNights;
+
+                double newTotalCost = guest.CalculateTotalCost(room.PricePerNight);
+                Console.WriteLine("Stay extended successfully.");
+                Console.WriteLine($"Updated Total Nights : {guest.TotalNights}");
+                Console.WriteLine($"New Total Cost       : OMR {newTotalCost:F2}");
             }
 
             // Case 14 Highest Revenue Booking 
             static void HighestRevenueBooking()
             {
+                var activeBookings = guests
+                    .Where(g => g.RoomNumber != "Not Assigned" && rooms.Any(r => r.RoomNumber == g.RoomNumber));
 
+                if (!activeBookings.Any())
+                {
+                    Console.WriteLine("No active bookings recorded.");
+                    return;
+                }
+
+                var ranked = activeBookings
+                    .Select(g =>
+                    {
+                        var room = rooms.FirstOrDefault(r => r.RoomNumber == g.RoomNumber);
+                        return new
+                        {
+                            g.GuestName,
+                            g.RoomNumber,
+                            TotalCost = g.CalculateTotalCost(room.PricePerNight)
+                        };
+                    })
+                    .OrderByDescending(x => x.TotalCost)
+                    .Take(1)
+                    .ToList();
+
+                var top = ranked.First();
+                Console.WriteLine("Highest-revenue booking:");
+                Console.WriteLine($"Guest Name  : {top.GuestName}");
+                Console.WriteLine($"Room Number : {top.RoomNumber}");
+                Console.WriteLine($"Total Cost  : OMR {top.TotalCost:F2}");
             }
 
             // Case 15 Guest Pagination Viewer 
             static void GuestPaginationViewer()
             {
+                const int pageSize = 3;
+                Console.Write("Enter page number: ");
+                string input = Console.ReadLine()?.Trim();
+                if (!int.TryParse(input, out int page) || page <= 0)
+                {
+                    Console.WriteLine("That page does not exist.");
+                    return;
+                }
+                int totalGuests = guests.Count;
+                int totalPages = (totalGuests + pageSize - 1) / pageSize;
+                if (!guests.Any())
+                {
+                    Console.WriteLine("No guests have been registered yet.");
+                    return;
+                }
 
+                if (page > totalPages)
+                {
+                    Console.WriteLine("That page does not exist.");
+                    return;
+                }
+                var pageGuests = guests.OrderBy(g => g.GuestName).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                Console.WriteLine($"========== Page {page} of {totalPages} ==========");
+                foreach (var g in pageGuests)
+                {
+                    Console.WriteLine($"Guest ID: {g.GuestId} | Name: {g.GuestName} | Room: {g.RoomNumber}");
+                }
             }
         }
     }
