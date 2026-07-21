@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="DatabaseTasks/Airline Information System.jpg" />
+    <File Path="DatabaseTasks/College Management System.jpg" />
+    <File Path="DatabaseTasks/Company Database.jpg" />
+  </Folder>
   <Project Path="BankingSystemApp/BankingSystemApp.csproj" Id="78f2a5f3-428c-428d-8f4a-8f661940d29a" />
   <Project Path="HotelManagementSystem/HotelManagementSystem.csproj" Id="2cca829c-77e0-432f-8cf0-9056fe60689c" />
   <Project Path="Task1Solution/Task1Solution.csproj" />
